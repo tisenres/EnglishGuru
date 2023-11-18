@@ -83,4 +83,7 @@ dependencies {
 
     // Realm
     implementation("io.realm:realm-android-library:10.10.0")
+
+    // CardView
+    implementation("androidx.cardview:cardview:1.0.0")
 }
