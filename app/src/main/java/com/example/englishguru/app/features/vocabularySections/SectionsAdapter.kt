@@ -29,7 +29,7 @@ class SectionsAdapter(private val presenter: IVocabularyPresenter): RecyclerView
             binding.button.setOnClickListener {
                 val pos = adapterPosition
                 if (pos != RecyclerView.NO_POSITION) {
-                    presenter.onButtonPressed()
+                    presenter.onButtonPressed(pos)
                 }
             }
         }
