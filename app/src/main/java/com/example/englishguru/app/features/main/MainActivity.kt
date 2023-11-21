@@ -1,4 +1,4 @@
-package com.example.englishguru.app.presentation.main
+package com.example.englishguru.app.features.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

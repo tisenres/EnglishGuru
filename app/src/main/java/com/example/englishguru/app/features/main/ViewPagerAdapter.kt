@@ -1,11 +1,11 @@
-package com.example.englishguru.app.presentation.main
+package com.example.englishguru.app.features.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.englishguru.app.presentation.pronounce.PronounceFragment
-import com.example.englishguru.app.presentation.vocabulary.VocabularyFragment
+import com.example.englishguru.app.features.pronounce.PronounceFragment
+import com.example.englishguru.app.features.vocabulary.VocabularyFragment
 
 
 class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {
