@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.englishguru.app.features.main.MainActivity
 import com.example.englishguru.databinding.FragmentVocabularyBinding
 
-class VocabularyFragment : Fragment(), IVocabularyView {
+class VocabularyFragment: Fragment(), IVocabularyView {
 
     private lateinit var binding: FragmentVocabularyBinding
     private lateinit var adapter: SectionsAdapter
@@ -18,6 +19,11 @@ class VocabularyFragment : Fragment(), IVocabularyView {
         super.onCreate(savedInstanceState)
         presenter = VocabularyPresenter(this)
         adapter = SectionsAdapter(presenter)
+    }
+
+    override fun navigateToWordFragment() {
+        val mainActivity = activity as? MainActivity
+        mainActivity?.navigateToWordFragment()
     }
 
     override fun onCreateView(
