@@ -1,4 +1,4 @@
-package com.example.englishguru.app.features.vocabulary
+package com.example.englishguru.app.features.vocabularySections
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,8 +16,8 @@ class VocabularyFragment : Fragment(), IVocabularyView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = SectionsAdapter()
         presenter = VocabularyPresenter(this)
+        adapter = SectionsAdapter(presenter)
     }
 
     override fun onCreateView(

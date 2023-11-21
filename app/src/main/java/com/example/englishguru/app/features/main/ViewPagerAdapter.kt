@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.englishguru.app.features.pronounce.PronounceFragment
-import com.example.englishguru.app.features.vocabulary.VocabularyFragment
+import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 
 
 class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {

@@ -1,33 +1,37 @@
-package com.example.englishguru.app.features.vocabulary
+package com.example.englishguru.app.features.vocabularySections
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.englishguru.databinding.VocabularySectionItemBinding
 
-class SectionsAdapter: RecyclerView.Adapter<SectionsAdapter.SectionViewHolder>() {
+class SectionsAdapter(private val presenter: IVocabularyPresenter): RecyclerView.Adapter<SectionsAdapter.SectionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionViewHolder {
-        val binding = VocabularySectionItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        Log.d("TEtstststs", "On create view holder")
+        val binding = VocabularySectionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SectionViewHolder(binding)
     }
 
     override fun getItemCount(): Int = 4
 
     override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
-        holder.bind("sjdjsdhjsdjhsd")
+
     }
 
     inner class SectionViewHolder(private val binding: VocabularySectionItemBinding): ViewHolder(binding.root) {
-        fun bind(item: String) {
 
+        init {
+            initSetOnClickListeners()
+        }
+
+        private fun initSetOnClickListeners() {
+            binding.button.setOnClickListener {
+                val pos = adapterPosition
+                if (pos != RecyclerView.NO_POSITION) {
+                    presenter.onButtonPressed()
+                }
+            }
         }
     }
 
