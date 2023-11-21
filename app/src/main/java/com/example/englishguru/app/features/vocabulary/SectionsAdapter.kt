@@ -1,5 +1,6 @@
 package com.example.englishguru.app.features.vocabulary
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class SectionsAdapter: RecyclerView.Adapter<SectionsAdapter.SectionViewHolder>()
             parent,
             false
         )
+        Log.d("TEtstststs", "On create view holder")
         return SectionViewHolder(binding)
     }
 
