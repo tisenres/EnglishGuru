@@ -1,18 +1,32 @@
 package com.example.englishguru.app.features.vocabulary
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.englishguru.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.englishguru.databinding.FragmentVocabularyBinding
 
-class VocabularyFragment : Fragment() {
+class VocabularyFragment : Fragment(), IVocabularyView {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_vocabulary, container, false)
+    private lateinit var binding: FragmentVocabularyBinding
+    private lateinit var adapter: SectionsAdapter
+    private lateinit var presenter: IVocabularyPresenter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = FragmentVocabularyBinding.inflate(layoutInflater)
+        adapter = SectionsAdapter()
+        presenter = VocabularyPresenter(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        binding.sectionsRv.layoutManager = LinearLayoutManager(requireContext())
+        binding.sectionsRv.adapter = adapter
     }
 }
