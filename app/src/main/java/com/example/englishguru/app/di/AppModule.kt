@@ -1,4 +1,7 @@
 package com.example.englishguru.app.di
 
-class appModule {
+import org.koin.dsl.module
+
+val appModule = module {
+
 }
