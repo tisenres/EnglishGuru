@@ -17,10 +17,7 @@ class WordFragment : Fragment(), IWordView {
         presenter = WordPresenter(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentWordBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -18,4 +18,16 @@
         android:textSize="40sp"
         android:textColor="@color/black" />
 
+    <Button
+        android:id="@+id/showAnswerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/show_answer"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_margin="15dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
