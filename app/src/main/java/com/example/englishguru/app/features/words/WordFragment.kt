@@ -19,7 +19,32 @@ class WordFragment : Fragment(), IWordView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentWordBinding.inflate(inflater, container, false)
+        setOnClickListeners()
+        initViewAppearance()
         return binding.root
+    }
+
+    private fun initViewAppearance() {
+        binding.optionButtons.apply {
+            againBtn.visibility = View.GONE
+            hardBtn.visibility = View.GONE
+            goodBtn.visibility = View.GONE
+            easyBtn.visibility = View.GONE
+        }
+    }
+
+    private fun setOnClickListeners() {
+        binding.showAnswerBtn.setOnClickListener {
+            binding.apply {
+                showAnswerBtn.visibility = View.GONE
+                optionButtons.apply {
+                    againBtn.visibility = View.VISIBLE
+                    hardBtn.visibility = View.VISIBLE
+                    goodBtn.visibility = View.VISIBLE
+                    easyBtn.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

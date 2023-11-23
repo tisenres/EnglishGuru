@@ -15,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/product_sans_regular"
         android:textSize="40sp"
         android:textColor="@color/black" />
 
@@ -25,9 +26,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/product_sans_bold"
+        android:backgroundTint="#25733B"
         android:text="@string/show_answer"
         android:clickable="true"
         android:focusable="true"
         android:layout_margin="15dp"/>
+
+    <include
+        android:id="@+id/optionButtons"
+        layout="@layout/option_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

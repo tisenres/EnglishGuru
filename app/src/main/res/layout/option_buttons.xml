@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/againBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cornerRadius="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="#D838C8"
+        android:text="@string/again"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/product_sans_regular"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/hardBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cornerRadius="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="#E88F09"
+        android:text="@string/hard"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/product_sans_regular"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/goodBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cornerRadius="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="#21BAA8"
+        android:text="@string/good"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/product_sans_regular"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/easyBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cornerRadius="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="#3CC12E"
+        android:text="@string/easy"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/product_sans_regular"
+        />
+
+</LinearLayout>
