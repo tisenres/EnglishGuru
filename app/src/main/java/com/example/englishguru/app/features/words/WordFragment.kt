@@ -45,6 +45,24 @@ class WordFragment : Fragment(), IWordView {
                 }
             }
         }
+
+        binding.optionButtons.apply {
+            againBtn.setOnClickListener {
+                presenter.onAgainButtonPressed()
+            }
+
+            hardBtn.setOnClickListener {
+                presenter.onHardButtonPressed()
+            }
+
+            goodBtn.setOnClickListener {
+                presenter.onGoodButtonPressed()
+            }
+
+            easyBtn.setOnClickListener {
+                presenter.onEasyButtonPressed()
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
