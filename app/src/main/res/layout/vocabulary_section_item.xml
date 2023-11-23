@@ -32,35 +32,39 @@
                 android:contentDescription="YTstdtrsd"
                 />
 
-                <TextView
-                    android:id="@+id/sectionName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Section name"
-                    android:textSize="20sp"
-                    android:layout_margin="10dp"
-                    android:textAppearance="?attr/textAppearanceTitleMedium"
-                    />
+            <TextView
+                android:id="@+id/sectionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/product_sans_bold"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textSize="23sp"
+                tools:text="Section name" />
 
                 <TextView
                     android:id="@+id/sectionDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Section description"
+                    android:fontFamily="@font/product_sans_regular"
                     android:textColor="#777777"
-                    android:textSize="15sp"
-                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    android:layout_margin="20dp"
                     android:textAppearance="?attr/textAppearanceTitleMedium"
                 />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="10dp"
                     android:textSize="20sp"
+                    android:fontFamily="@font/product_sans_bold"
                     android:text="@string/learn"
-                    android:backgroundTint="#39A2D3"
+                    android:backgroundTint="#25733B"
                     style="@style/Widget.Material3.Button"
                     />
 
