@@ -1,5 +1,5 @@
 package com.example.englishguru.app.features.words
 
-interface IWordPresenter {
+interface IWordModel {
     fun getWord(): String
 }

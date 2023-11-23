@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
 import com.example.englishguru.databinding.ActivityMainBinding
@@ -17,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initVocabularyFragment()
+    }
+
+    private fun initVocabularyFragment() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<VocabularyFragment>(binding.fragmentContainer.id)
@@ -24,10 +29,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToWordFragment() {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        val wordFragment = WordFragment.newInstance("ksdjsdjsd", "skdjsjkd")
-        fragmentTransaction.replace(binding.fragmentContainer.id, wordFragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<WordFragment>(binding.fragmentContainer.id)
+            addToBackStack(null)
+        }
     }
 }

@@ -34,5 +34,4 @@ class SectionsAdapter(private val presenter: IVocabularyPresenter): RecyclerView
             }
         }
     }
-
 }
