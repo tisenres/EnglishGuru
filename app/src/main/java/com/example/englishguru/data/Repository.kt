@@ -6,7 +6,13 @@ import java.util.Date
 
 class Repository: IRepository {
 
-    private val testStorage = mutableListOf(Word("AAAAAA", Date()), Word("SDHSDGSD", Date()), Word("sjdhshjdjhsd", Date()))
+    private val testStorage = mutableListOf<Word>()
+
+    init {
+        for (i in 0 until 100) {
+            testStorage.add(Word("Word $i", Date()))
+        }
+    }
 
     override fun getWord(): Word {
         return testStorage.random()

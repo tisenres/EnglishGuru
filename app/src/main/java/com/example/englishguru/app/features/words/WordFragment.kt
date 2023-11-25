@@ -25,12 +25,14 @@ class WordFragment : Fragment(), IWordView {
     }
 
     private fun initViewAppearance() {
+        binding.showAnswerBtn.visibility = View.VISIBLE
         binding.optionButtons.apply {
             againBtn.visibility = View.GONE
             hardBtn.visibility = View.GONE
             goodBtn.visibility = View.GONE
             easyBtn.visibility = View.GONE
         }
+        binding.wordTv.text = presenter.getWord()
     }
 
     private fun setOnClickListeners() {
@@ -67,6 +69,9 @@ class WordFragment : Fragment(), IWordView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.wordTv.text = presenter.getWord()
+    }
+
+    override fun showNextWord() {
+        initViewAppearance()
     }
 }
