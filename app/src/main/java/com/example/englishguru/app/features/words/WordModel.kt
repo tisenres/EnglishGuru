@@ -17,9 +17,6 @@ class WordModel: IWordModel {
     override fun getWord(): String {
 
         currentWord = repository.getWordInfo()
-        currentWord.definition?.let {
-
-        }
 
         val disposable = wordsAPI.loadWordInfo("accurate")
             .subscribeOn(Schedulers.io())

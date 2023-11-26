@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.englishguru.databinding.FragmentWordBinding
-import io.realm.BuildConfig
 
 class WordFragment : Fragment(), IWordView {
 

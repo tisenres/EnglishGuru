@@ -6,5 +6,4 @@ interface IWordPresenter {
     fun onHardButtonPressed()
     fun onGoodButtonPressed()
     fun onEasyButtonPressed()
-    fun onViewCreated()
 }

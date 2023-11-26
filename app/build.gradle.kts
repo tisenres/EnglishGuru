@@ -1,8 +1,8 @@
-import org.jetbrains.kotlin.gradle.internal.kapt.incremental.UnknownSnapshot.classpath
 
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("io.realm.kotlin")
 }
 
 android {
@@ -84,7 +84,9 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     // Realm
-    implementation("io.realm:realm-android-library:10.10.0")
+    implementation("io.realm.kotlin:library-base:1.11.0")
+    implementation("io.realm.kotlin:library-sync:1.11.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
 
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")

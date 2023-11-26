@@ -32,8 +32,4 @@ class WordPresenter(private val fragment: IWordView): IWordPresenter {
         model.increaseDaysForWord(EASY_INCREASE)
         fragment.showNextWord()
     }
-
-    override fun onViewCreated() {
-        model.loadAllWords()
-    }
 }

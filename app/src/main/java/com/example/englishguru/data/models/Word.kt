@@ -6,5 +6,5 @@ data class Word (
     val value: String,
     var dateToShow: Date,
     var wasShown: Boolean = false,
-    var definition: String
+    var definition: String = ""
 )
