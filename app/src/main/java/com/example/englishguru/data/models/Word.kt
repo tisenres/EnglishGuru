@@ -1,10 +1,10 @@
 package com.example.englishguru.data.models
 
-import java.util.Date
+import java.time.LocalDateTime
 
 data class Word (
     val value: String,
-    var dateToShow: Date,
+    var dateToShow: Int = LocalDateTime.now().dayOfYear,
     var wasShown: Boolean = false,
     var definition: String = ""
 )

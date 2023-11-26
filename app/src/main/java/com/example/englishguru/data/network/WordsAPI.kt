@@ -1,6 +1,5 @@
 package com.example.englishguru.data.network
 
-import com.example.englishguru.data.models.WordResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Headers

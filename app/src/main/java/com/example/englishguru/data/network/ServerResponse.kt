@@ -1,4 +1,4 @@
-package com.example.englishguru.data.models
+package com.example.englishguru.data.network
 
 data class WordResponse(
     val word: String,

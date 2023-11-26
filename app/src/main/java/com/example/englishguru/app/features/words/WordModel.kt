@@ -3,6 +3,7 @@ package com.example.englishguru.app.features.words
 import android.util.Log
 import com.example.englishguru.data.IRepository
 import com.example.englishguru.data.Repository
+import com.example.englishguru.data.db.WordDto
 import com.example.englishguru.data.models.Word
 import com.example.englishguru.data.network.Remote
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +17,7 @@ class WordModel: IWordModel {
 
     override fun getWord(): String {
 
-        currentWord = repository.getWordInfo()
+//        currentWord = repository.getWordInfo()
 
         val disposable = wordsAPI.loadWordInfo("accurate")
             .subscribeOn(Schedulers.io())
@@ -31,7 +32,7 @@ class WordModel: IWordModel {
     }
 
     override fun increaseDaysForWord(increaseNum: Int) {
-        currentWord.dateToShow.date += increaseNum
+        currentWord.dateToShow += increaseNum
         currentWord.wasShown = true
         repository.updateWord(currentWord)
     }

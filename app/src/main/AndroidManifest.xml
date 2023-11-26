@@ -17,10 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnglishGuru"
         tools:targetApi="31">
-<!--        <meta-data-->
-<!--            android:name="com.example.englishguru.rapidapikey"-->
-<!--            android:value="${RAPID_API_KEY}"-->
-<!--            />-->
         <activity
             android:name=".app.features.main.MainActivity"
             android:exported="true">
