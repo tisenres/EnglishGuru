@@ -9,7 +9,7 @@ class Repository: IRepository {
     private val testStorage = mutableListOf<Word>()
 
     init {
-        for (i in 0 until 100) {
+        for (i in 0 until 10) {
             testStorage.add(Word("Word $i", Date()))
         }
     }
