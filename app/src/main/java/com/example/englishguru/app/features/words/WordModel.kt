@@ -26,7 +26,7 @@ class WordModel: IWordModel {
                 error.printStackTrace()
             })
 
-        return repository.getWord().value
+        return "VAVVAa"
 
 //        currentWord = repository.getWord()
 //        currentWord?.let {
