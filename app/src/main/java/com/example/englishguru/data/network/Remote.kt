@@ -3,7 +3,7 @@ package com.example.englishguru.data.network
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "http://"
+private const val BASE_URL = "https://wordsapiv1.p.rapidapi.com/"
 
 object Remote: IRemote {
 
