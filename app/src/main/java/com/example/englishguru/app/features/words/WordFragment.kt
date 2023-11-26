@@ -69,6 +69,7 @@ class WordFragment : Fragment(), IWordView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.onViewCreated()
     }
 
     override fun showNextWord() {
