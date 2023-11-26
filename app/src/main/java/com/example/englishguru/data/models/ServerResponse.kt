@@ -1,14 +1,5 @@
 package com.example.englishguru.data.models
 
-//data class ServerResponse(
-//    val word: String,
-//    val results: List<Result>
-//)
-//
-//data class Result (
-//    val definition: String
-//)
-
 data class WordResponse(
     val word: String,
     val results: List<WordResult>,

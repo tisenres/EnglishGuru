@@ -17,7 +17,7 @@ class Repository: IRepository {
     override val wordsAreLoaded: Boolean
         get() = testStorage.isNotEmpty()
 
-    override fun getWord(): Word {
+    override fun getWordInfo(): Word {
         val filter = testStorage.filter {
             it.dateToShow.day == Date().day
         }
