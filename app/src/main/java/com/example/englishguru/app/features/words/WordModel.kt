@@ -16,6 +16,7 @@ class WordModel: IWordModel {
 
     override fun increaseDaysForWord(increaseNum: Int) {
         currentWord.dateToShow.date += increaseNum
+        currentWord.wasShown = true
         repository.updateWord(currentWord)
     }
 }

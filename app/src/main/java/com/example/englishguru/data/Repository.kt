@@ -15,10 +15,28 @@ class Repository: IRepository {
     }
 
     override fun getWord(): Word {
-        return testStorage.random()
+        val filter = testStorage.filter {
+            it.dateToShow.day == Date().day
+        }
+
+        val numberOfWordsShown = filter.count { it.wasShown }
+
+        return if (numberOfWordsShown == 0) {
+            filter.shuffled().first()
+        } else {
+            filter.shuffled().first {
+                it.wasShown
+            }
+        }
     }
 
     override fun updateWord(word: Word) {
+        testStorage.filter {
+            it == word
+        }.map {
+            it.dateToShow = word.dateToShow
+            it.wasShown = word.wasShown
+        }
         Log.d("SDHSHDGSDSD", "Word: ${word.value}, Date: ${word.dateToShow}")
     }
 }

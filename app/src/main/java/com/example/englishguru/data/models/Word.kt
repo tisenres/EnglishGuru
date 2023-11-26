@@ -4,5 +4,6 @@ import java.util.Date
 
 data class Word (
     val value: String,
-    val dateToShow: Date
+    var dateToShow: Date,
+    var wasShown: Boolean = false
 )
