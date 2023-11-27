@@ -27,7 +27,6 @@
                 android:id="@+id/sectionImage"
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
-                android:src="@drawable/material_pic"
                 android:scaleType="centerCrop"
                 android:contentDescription="YTstdtrsd"
                 />

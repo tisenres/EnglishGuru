@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.englishguru.R
 import com.example.englishguru.databinding.VocabularySectionItemBinding
 
 const val NUMBER_OF_SECTIONS = 5
@@ -39,6 +40,14 @@ class SectionsAdapter(private val presenter: IVocabularyPresenter): RecyclerView
         fun bind(position: Int) {
             binding.sectionName.text = presenter.getSectionName(position)
             binding.sectionDescription.text = presenter.getSectionDescription(position)
+            val image = when (position) {
+                0 -> R.drawable.imagea1
+                1 -> R.drawable.imagea2
+                2 -> R.drawable.imageb1
+                3 -> R.drawable.imageb2
+                else -> R.drawable.imagec1
+            }
+            binding.sectionImage.setImageResource(image)
         }
     }
 }
