@@ -1,10 +1,10 @@
 package com.example.englishguru.app.features.words
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.englishguru.databinding.FragmentWordBinding
 
 class WordFragment : Fragment(), IWordView {
@@ -14,7 +14,7 @@ class WordFragment : Fragment(), IWordView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = WordPresenter(this)
+        presenter = WordPresenter(this, requireContext())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
