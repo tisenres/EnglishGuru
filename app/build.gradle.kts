@@ -3,6 +3,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("io.realm.kotlin")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -89,8 +90,13 @@ dependencies {
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0")
 
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
+
+//    implementation("io.realm:realm-gradle-plugin:10.10.0")
+    kapt("io.realm:realm-annotations-processor:10.10.0")
+//    implementation("io.realm:realm-kotlin-extensions:10.10.0")
+//    implementation("io.realm:realm-android-library:10.10.0")
 }

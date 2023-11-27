@@ -1,11 +1,8 @@
 package com.example.englishguru.data.db
 
-import android.util.Log
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
-import io.realm.kotlin.query.RealmResults
-import java.time.LocalDateTime
 
 class WordDao {
     private val config = RealmConfiguration.create(schema = setOf(WordDto::class))
@@ -23,19 +20,7 @@ class WordDao {
         }
     }
 
-    fun getWord(): WordDto {
-
-        val todayDate = LocalDateTime.now().dayOfYear
-
-        val items: RealmResults<WordDto> = realm.query<WordDto>().find()
-
-        items.forEach {
-            if (it.dateToShow == todayDate) {
-                Log.d("SDYSTDYTSD", "YEYTSDTYSTYDTYSD")
-            }
-        }
-
-        return items.first()
-
+    fun getWordInfo(word: String): WordDto? {
+        return realm.query<WordDto>("word = $0", word).first().find()
     }
 }

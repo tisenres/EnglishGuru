@@ -7,16 +7,17 @@ import com.example.englishguru.data.models.Word
 class DBRepository {
 
     private val wordDao: WordDao = WordDao()
-    private var wordsAreLoadedInPrefs: Boolean = false
 
-    fun getWordInfo(): Word {
-        val wordDao = wordDao.getWord()
-        return Word(
-            value = wordDao.word,
-            dateToShow = wordDao.dateToShow,
-            wasShown = wordDao.wasShown,
-            definition = wordDao.definition
-        )
+    fun getWordInfo(word: Word): Word? {
+        val wordDto = wordDao.getWordInfo(word.value)
+        return wordDto?.let {
+             Word(
+                value = it.word,
+                dateToShow = it.dateToShow,
+                wasShown = it.wasShown,
+                definition = it.definition
+            )
+        }
     }
 
     fun updateWordInfo(word: Word) {
@@ -25,4 +26,5 @@ class DBRepository {
         )
         wordDao.updateWord(wordDto)
     }
+
 }
