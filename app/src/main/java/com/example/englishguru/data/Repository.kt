@@ -2,14 +2,17 @@ package com.example.englishguru.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.example.englishguru.R
 import com.example.englishguru.data.db.WordDao
 import com.example.englishguru.data.db.WordDto
 import com.example.englishguru.data.models.Word
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import kotlinx.coroutines.launch
 
 class Repository(private val context: Context): IRepository {
 
@@ -17,6 +20,15 @@ class Repository(private val context: Context): IRepository {
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("mySharedPreferences", Context.MODE_PRIVATE)
     private val editor: SharedPreferences.Editor = sharedPreferences.edit()
     private var wordsAreLoadedInPrefs: Boolean = false
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+
+    override fun getWord(): String {
+        if (!wordsAreLoadedInPrefs) {
+            loadWordsInSharedPrefs()
+            wordsAreLoadedInPrefs = true
+        }
+        return getStringFromPrefs("word_${(0..5000).random()}")
+    }
 
     override fun getWordInfo(): Word {
         val wordDao = wordDao.getWord()
@@ -28,15 +40,7 @@ class Repository(private val context: Context): IRepository {
         )
     }
 
-    override fun getWord(): String {
-        if (!wordsAreLoadedInPrefs) {
-            loadWordsInSharedPrefs()
-            wordsAreLoadedInPrefs = true
-        }
-        return sharedPreferences.getString((0..5000).random().toString(), "UA").toString()
-    }
-
-    override fun updateWord(word: Word) {
+    override fun updateWordInfo(word: Word) {
         val wordDto = WordDto(
 
         )
@@ -44,25 +48,42 @@ class Repository(private val context: Context): IRepository {
     }
 
     override fun loadWordsInSharedPrefs() {
-
-        val mySharedPreferences = MySharedPreferences(context)
-
-        val inputStream = context.resources.openRawResource(R.raw.oxford5000)
-        try {
-            val inputStreamReader = InputStreamReader(inputStream)
-            val bufferedReader = BufferedReader(inputStreamReader)
-            var line: String
-            while (bufferedReader.readLine().also { line = it } != null) {
-                mySharedPreferences.saveString(line)
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } finally {
+        coroutineScope.launch {
             try {
-                inputStream.close()
+                withContext(Dispatchers.IO) {
+                    val inputStream = context.resources.openRawResource(R.raw.oxford5000)
+                    inputStream.use { stream ->
+                        val inputStreamReader = InputStreamReader(stream)
+                        val bufferedReader = BufferedReader(inputStreamReader)
+
+                        val wordList = mutableListOf<Pair<String, String>>()
+                        var line: String?
+                        var counter = 0
+
+                        while (bufferedReader.readLine().also { line = it } != null) {
+                            wordList.add("word_$counter" to (line ?: ""))
+                            counter++
+                        }
+
+                        saveStringListInPrefs(wordList)
+                    }
+                }
             } catch (e: IOException) {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun saveStringListInPrefs(wordList: List<Pair<String, String>>) {
+        editor.apply {
+            wordList.forEach { (key, value) ->
+                putString(key, value)
+            }
+            apply()
+        }
+    }
+
+    private fun getStringFromPrefs(key: String): String {
+        return sharedPreferences.getString(key, "Not defined") ?: "Not defined"
     }
 }

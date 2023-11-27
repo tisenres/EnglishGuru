@@ -35,6 +35,6 @@ class WordModel(private val context: Context): IWordModel {
     override fun increaseDaysForWord(increaseNum: Int) {
         currentWord.dateToShow += increaseNum
         currentWord.wasShown = true
-        repository.updateWord(currentWord)
+        repository.updateWordInfo(currentWord)
     }
 }
