@@ -27,8 +27,8 @@ class WordFragment : Fragment(), IWordView {
     private fun initViewAppearanceBeforeAnswer() {
         binding.apply {
             showAnswerBtn.visibility = View.VISIBLE
-            wordTv.visibility = View.VISIBLE
             wordTv.text = presenter.getWord()
+            wordTv.visibility = View.VISIBLE
             optionButtons.apply {
                 againBtn.visibility = View.GONE
                 hardBtn.visibility = View.GONE
@@ -36,10 +36,9 @@ class WordFragment : Fragment(), IWordView {
                 easyBtn.visibility = View.GONE
             }
             wordInfo.apply {
-                text1.visibility = View.GONE
-                text2.visibility = View.GONE
-                text3.visibility = View.GONE
-                text4.visibility = View.GONE
+                wordCard.visibility = View.GONE
+                definitionCard.visibility = View.GONE
+                synonymsCard.visibility = View.GONE
             }
         }
     }
@@ -55,12 +54,12 @@ class WordFragment : Fragment(), IWordView {
                 easyBtn.visibility = View.VISIBLE
             }
             wordInfo.apply {
-                text1.visibility = View.VISIBLE
-                text2.visibility = View.VISIBLE
-                text3.visibility = View.VISIBLE
-                text4.visibility = View.VISIBLE
+                wordCard.visibility = View.VISIBLE
+                definitionCard.visibility = View.VISIBLE
+                synonymsCard.visibility = View.VISIBLE
             }
         }
+        initWordInfoData()
     }
 
     private fun setOnClickListeners() {
@@ -90,5 +89,11 @@ class WordFragment : Fragment(), IWordView {
 
     override fun showNextWord() {
         initViewAppearanceBeforeAnswer()
+    }
+
+    private fun initWordInfoData() {
+        binding.wordInfo.apply {
+            word.text = presenter.getWord()
+        }
     }
 }
