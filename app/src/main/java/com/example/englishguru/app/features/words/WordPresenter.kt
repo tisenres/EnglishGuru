@@ -16,22 +16,22 @@ class WordPresenter(private val fragment: IWordView, context: Context): IWordPre
     }
 
     override fun onAgainButtonPressed() {
-        model.increaseDaysForWord(AGAIN_INCREASE)
+//        model.increaseDaysForWord(AGAIN_INCREASE)
         fragment.showNextWord()
     }
 
     override fun onHardButtonPressed() {
-        model.increaseDaysForWord(HARD_INCREASE)
+//        model.increaseDaysForWord(HARD_INCREASE)
         fragment.showNextWord()
     }
 
     override fun onGoodButtonPressed() {
-        model.increaseDaysForWord(GOOD_INCREASE)
+//        model.increaseDaysForWord(GOOD_INCREASE)
         fragment.showNextWord()
     }
 
     override fun onEasyButtonPressed() {
-        model.increaseDaysForWord(EASY_INCREASE)
+//        model.increaseDaysForWord(EASY_INCREASE)
         fragment.showNextWord()
     }
 

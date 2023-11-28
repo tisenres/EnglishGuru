@@ -4,9 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     >
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/againBtn"
         android:layout_width="100dp"
@@ -32,12 +30,12 @@
         android:layout_weight="1"
         android:backgroundTint="#DC670F"
         android:text="@string/hard"
+        android:clickable="true"
+        android:focusable="true"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:insetLeft="0dp"
         android:insetRight="0dp"
-        android:clickable="true"
-        android:focusable="true"
         android:fontFamily="@font/product_sans_regular"
         />
 

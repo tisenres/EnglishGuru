@@ -28,7 +28,9 @@ class WordFragment : Fragment(), IWordView {
     private fun initViewAppearanceBeforeAnswer() {
         binding.apply {
             showAnswerBtn.visibility = View.VISIBLE
-            wordTv.text = presenter.getWord()
+            val word = presenter.getWord()
+            wordTv.text = word
+            wordInfo.word.text = word
             wordTv.visibility = View.VISIBLE
             optionButtons.apply {
                 againBtn.visibility = View.GONE
@@ -49,6 +51,7 @@ class WordFragment : Fragment(), IWordView {
     }
 
     private fun initViewAppearanceWhenWordInfo() {
+        initWordInfoData()
         binding.apply {
             showAnswerBtn.visibility = View.GONE
             wordTv.visibility = View.GONE
@@ -68,7 +71,6 @@ class WordFragment : Fragment(), IWordView {
                 similarToCard.visibility = View.VISIBLE
             }
         }
-        initWordInfoData()
     }
 
     private fun setOnClickListeners() {
@@ -101,11 +103,10 @@ class WordFragment : Fragment(), IWordView {
 
     private fun initWordInfoData() {
         binding.wordInfo.apply {
-            word.text = presenter.getWord()
             definition.text = presenter.getDefinition()
-//            similarTo.text = presenter.getSimilarTo().toString()
-//            examples.text = presenter.getExamples().toString()
-//            synonyms.text = presenter.getSynonyms().toString()
+            similarTo.text = presenter.getSimilarTo().joinToString("\n")
+            examples.text = presenter.getExamples().joinToString("\n")
+            synonyms.text = presenter.getSynonyms().joinToString("\n")
             partOfSpeech.text = presenter.getPartOfSpeech()
         }
     }

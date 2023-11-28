@@ -1,9 +1,11 @@
 package com.example.englishguru.app.features.words
 
 import android.content.Context
+import android.util.Log
 import com.example.englishguru.data.SharedPrefsRepository
 import com.example.englishguru.data.models.Word
 import com.example.englishguru.data.network.Remote
+import io.realm.kotlin.internal.platform.runBlocking
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +16,7 @@ const val TOTAL_NUMBER_OF_WORDS = 2978
 class WordModel(context: Context): IWordModel {
 
     private val sharedPrefsRepo: SharedPrefsRepository = SharedPrefsRepository(context)
-    private lateinit var currentWord: Word
+    private var currentWord: Word? = null
     private val wordsAPI = Remote.instance
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -25,7 +27,9 @@ class WordModel(context: Context): IWordModel {
     }
 
     override fun getWordInfo(): Word {
-        return currentWord
+        return currentWord?.let {
+            currentWord
+        } ?: Word("Not defined")
     }
 
     override fun increaseDaysForWord(increaseNum: Int) {
