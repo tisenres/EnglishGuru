@@ -21,12 +21,14 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        }
+
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -87,6 +89,7 @@ dependencies {
     // Realm
     implementation("io.realm.kotlin:library-base:1.11.0")
     implementation("io.realm.kotlin:library-sync:1.11.0")
+    kapt("io.realm:realm-annotations-processor:10.10.0")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
@@ -95,8 +98,5 @@ dependencies {
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
 
-//    implementation("io.realm:realm-gradle-plugin:10.10.0")
-    kapt("io.realm:realm-annotations-processor:10.10.0")
-//    implementation("io.realm:realm-kotlin-extensions:10.10.0")
-//    implementation("io.realm:realm-android-library:10.10.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 }

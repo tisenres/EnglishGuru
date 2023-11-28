@@ -12,7 +12,7 @@ data class WordResult(
     val definition: String,
     val partOfSpeech: String?,
     val synonyms: List<String>,
-    val similarTo: List<String>,
+    val similarTo: List<String>? = null,
     val derivation: List<String>? = null,
     val examples: List<String>,
     val typeOf: List<String>? = null,

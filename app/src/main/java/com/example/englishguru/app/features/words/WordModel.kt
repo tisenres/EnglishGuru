@@ -1,57 +1,72 @@
 package com.example.englishguru.app.features.words
 
 import android.content.Context
-import android.util.Log
 import com.example.englishguru.data.SharedPrefsRepository
 import com.example.englishguru.data.models.Word
 import com.example.englishguru.data.network.Remote
-import io.realm.kotlin.internal.platform.runBlocking
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.time.LocalDateTime
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
 const val TOTAL_NUMBER_OF_WORDS = 2978
 
-class WordModel(context: Context): IWordModel {
+class WordModel(context: Context, private val port: OutputPortModel): IWordModel {
 
     private val sharedPrefsRepo: SharedPrefsRepository = SharedPrefsRepository(context)
+
     private var currentWord: Word? = null
-    private val wordsAPI = Remote.instance
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private var currentWordStr: String? = null
+
+    private val wordsAPI = Remote.getInstance()
+    private var wordFetchDisposable: Disposable? = null
+
+    override fun assignRandomWord() {
+        currentWordStr = sharedPrefsRepo.getWord((0..TOTAL_NUMBER_OF_WORDS).random())
+    }
 
     override fun getWord(): String {
-        val wordStr = sharedPrefsRepo.getWord((0..TOTAL_NUMBER_OF_WORDS).random())
-        fetchWordDataRemotely(wordStr)
-        return wordStr
+        return currentWordStr ?: ""
     }
 
     override fun getWordInfo(): Word {
         return currentWord?.let {
             currentWord
-        } ?: Word("Not defined")
+        } ?: Word(word = "Not defined",
+            definition = "Word is NOT LOADAED!"
+        )
+    }
+
+    override fun fetchWordDataRemotely() {
+        val queryWord = currentWordStr ?: return
+
+        wordFetchDisposable?.dispose()
+
+        wordFetchDisposable = wordsAPI.loadWordInfo(word = queryWord)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                val localWord = Word(
+                    word = response.word,
+                    definition = response.results.firstOrNull()?.definition ?: "",
+                    partOfSpeech = response.results.firstOrNull()?.partOfSpeech ?: "",
+                    synonyms = response.results.firstOrNull()?.synonyms ?: emptyList(),
+                    derivation = response.results.firstOrNull()?.derivation ?: emptyList(),
+                    examples = response.results.firstOrNull()?.examples ?: emptyList(),
+                    similarTo = response.results.firstOrNull()?.similarTo ?: emptyList()
+                )
+                currentWord = localWord
+                port.onFetchComplete(localWord)
+            }, { error ->
+                error.printStackTrace()
+            })
+    }
+
+    override fun onDestroyView() {
+        wordFetchDisposable?.dispose()
     }
 
     override fun increaseDaysForWord(increaseNum: Int) {
 //        currentWord.dateToShow += increaseNum
 //        currentWord.wasShown = true
-    }
-
-    private fun fetchWordDataRemotely(wordValue: String) {
-        coroutineScope.launch(Dispatchers.IO) {
-            try {
-                val response = wordsAPI.loadWordInfo(wordValue)
-                currentWord = Word(
-                    word = response.word,
-                    definition = response.results[0].definition,
-                    partOfSpeech = response.results[0].partOfSpeech ?: "",
-                    synonyms = response.results[0].synonyms,
-                    derivation = response.results[0].derivation ?: emptyList(),
-                    examples = response.results[0].examples
-                    )
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
     }
 }

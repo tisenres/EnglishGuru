@@ -1,7 +1,7 @@
 package com.example.englishguru.data.models
 
 data class Word (
-    val word: String,
+    val word: String = "",
 //    var dateToShow: Int = LocalDateTime.now().dayOfYear,
 //    var wasShown: Boolean = false,
     var definition: String = "",

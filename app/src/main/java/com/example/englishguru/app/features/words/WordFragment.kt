@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.englishguru.data.models.Word
 import com.example.englishguru.databinding.FragmentWordBinding
 
 class WordFragment : Fragment(), IWordView {
@@ -21,61 +22,45 @@ class WordFragment : Fragment(), IWordView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentWordBinding.inflate(inflater, container, false)
         setOnClickListeners()
-        initViewAppearanceBeforeAnswer()
         return binding.root
     }
 
-    private fun initViewAppearanceBeforeAnswer() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.onViewCreated()
+    }
+
+    override fun showWordTitle(wordStr: String) {
+        binding.wordTitle.text = wordStr
+        setupTitleVisibility()
+    }
+
+    private fun setupTitleVisibility() {
         binding.apply {
+            wordTitle.visibility = View.VISIBLE
             showAnswerBtn.visibility = View.VISIBLE
-            val word = presenter.getWord()
-            wordTv.text = word
-            wordInfo.word.text = word
-            wordTv.visibility = View.VISIBLE
-            optionButtons.apply {
-                againBtn.visibility = View.GONE
-                hardBtn.visibility = View.GONE
-                goodBtn.visibility = View.GONE
-                easyBtn.visibility = View.GONE
-            }
-            wordInfo.apply {
-                wordCard.visibility = View.GONE
-                definitionCard.visibility = View.GONE
-                synonymsCard.visibility = View.GONE
-                partOfSpeechCard.visibility = View.GONE
-                derivationCard.visibility = View.GONE
-                examplesCard.visibility = View.GONE
-                similarToCard.visibility = View.GONE
-            }
+            wordInfo.root.visibility = View.GONE
+            optionButtons.root.visibility = View.GONE
         }
     }
 
-    private fun initViewAppearanceWhenWordInfo() {
-        initWordInfoData()
+    private fun setupDetailsVisibility() {
         binding.apply {
+            wordTitle.visibility = View.GONE
             showAnswerBtn.visibility = View.GONE
-            wordTv.visibility = View.GONE
-            optionButtons.apply {
-                againBtn.visibility = View.VISIBLE
-                hardBtn.visibility = View.VISIBLE
-                goodBtn.visibility = View.VISIBLE
-                easyBtn.visibility = View.VISIBLE
-            }
-            wordInfo.apply {
-                wordCard.visibility = View.VISIBLE
-                definitionCard.visibility = View.VISIBLE
-                synonymsCard.visibility = View.VISIBLE
-                partOfSpeechCard.visibility = View.VISIBLE
-                derivationCard.visibility = View.VISIBLE
-                examplesCard.visibility = View.VISIBLE
-                similarToCard.visibility = View.VISIBLE
-            }
+            optionButtons.root.visibility = View.VISIBLE
+            wordInfo.root.visibility = View.VISIBLE
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.onDestroyView()
     }
 
     private fun setOnClickListeners() {
         binding.showAnswerBtn.setOnClickListener {
-            initViewAppearanceWhenWordInfo()
+            presenter.onShowAnswerButtonPressed()
         }
 
         binding.optionButtons.apply {
@@ -97,17 +82,19 @@ class WordFragment : Fragment(), IWordView {
         }
     }
 
-    override fun showNextWord() {
-        initViewAppearanceBeforeAnswer()
+    override fun showWordDetails() {
+        setupDetailsVisibility()
     }
 
-    private fun initWordInfoData() {
+    override fun fillWordDetails(wordInfo: Word) {
         binding.wordInfo.apply {
-            definition.text = presenter.getDefinition()
-            similarTo.text = presenter.getSimilarTo().joinToString("\n")
-            examples.text = presenter.getExamples().joinToString("\n")
-            synonyms.text = presenter.getSynonyms().joinToString("\n")
-            partOfSpeech.text = presenter.getPartOfSpeech()
+            word.text = wordInfo.word
+            definition.text = wordInfo.definition
+            examples.text = wordInfo.examples.joinToString("\n")
+            synonyms.text = wordInfo.synonyms.joinToString("\n")
+            partOfSpeech.text = wordInfo.partOfSpeech
+            similarTo.text = wordInfo.similarTo.joinToString("\n")
+            derivation.text = wordInfo.derivation.joinToString("\n")
         }
     }
 }
