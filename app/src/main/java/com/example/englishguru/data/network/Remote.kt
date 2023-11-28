@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 private const val BASE_URL = "https://wordsapiv1.p.rapidapi.com/"
 
-object Remote: IRemote {
+object Remote {
 
     val instance: WordsAPI by lazy {
         val retrofit = Retrofit.Builder()

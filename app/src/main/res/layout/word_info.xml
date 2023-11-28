@@ -40,7 +40,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:drawableStart="@drawable/baseline_circle_24"
-                        android:drawableTint="#E509E1"
+                        android:drawableTint="#E52EE1"
                         android:drawablePadding="5dp"
                         android:fontFamily="@font/product_sans_bold"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -88,7 +88,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:drawableStart="@drawable/baseline_circle_24"
-                        android:drawableTint="#09DEE5"
+                        android:drawableTint="#3AB6BA"
                         android:drawablePadding="5dp"
                         android:fontFamily="@font/product_sans_bold"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -184,7 +184,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:drawableStart="@drawable/baseline_circle_24"
-                        android:drawableTint="#44E509"
+                        android:drawableTint="#59C531"
                         android:drawablePadding="5dp"
                         android:fontFamily="@font/product_sans_bold"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -280,12 +280,12 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:drawableStart="@drawable/baseline_circle_24"
-                        android:drawableTint="#E5690B"
                         android:drawablePadding="5dp"
+                        android:drawableTint="#DC670F"
                         android:fontFamily="@font/product_sans_bold"
+                        android:text="Similar to"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
-                        android:textSize="18sp"
-                        android:text="Similar to" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/similarTo"
