@@ -16,7 +16,7 @@ class WordFragment : Fragment(), IWordView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = WordPresenter(this, requireContext())
+        presenter = WordPresenter(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

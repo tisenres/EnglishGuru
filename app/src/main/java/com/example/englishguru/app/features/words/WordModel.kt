@@ -1,20 +1,16 @@
 package com.example.englishguru.app.features.words
 
-import android.content.Context
-import com.example.englishguru.data.SharedPrefsRepository
 import com.example.englishguru.data.models.Word
 import com.example.englishguru.data.network.IRemote
-import com.example.englishguru.data.network.Remote
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.example.englishguru.data.repository.IRepository
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import org.koin.java.KoinJavaComponent.getKoin
 
 const val TOTAL_NUMBER_OF_WORDS = 2978
 
-class WordModel(context: Context, private val port: OutputPortModel): IWordModel {
+class WordModel(private val port: OutputPortModel): IWordModel {
 
-    private val sharedPrefsRepo: SharedPrefsRepository = getKoin().get()
+    private val sharedPrefsRepo: IRepository = getKoin().get()
     private val remote: IRemote = getKoin().get()
 
     private var currentWord: Word? = null

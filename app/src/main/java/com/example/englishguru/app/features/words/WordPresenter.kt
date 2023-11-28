@@ -8,9 +8,9 @@ const val HARD_INCREASE = 1
 const val GOOD_INCREASE = 3
 const val EASY_INCREASE = 7
 
-class WordPresenter(private val fragment: IWordView, context: Context): IWordPresenter, OutputPortModel {
+class WordPresenter(private val fragment: IWordView): IWordPresenter, OutputPortModel {
 
-    private val model: IWordModel = WordModel(context, this)
+    private val model: IWordModel = WordModel(this)
 
     override fun onViewCreated() {
         model.assignRandomWord()

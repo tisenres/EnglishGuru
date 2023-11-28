@@ -1,4 +1,4 @@
-package com.example.englishguru.data
+package com.example.englishguru.data.repository
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -13,14 +13,14 @@ import java.io.InputStreamReader
 
 const val WORDS_ARE_LOADED = "WORDS_ARE_LOADED"
 
-class SharedPrefsRepository(private val context: Context) {
+class SharedPrefsRepository(private val context: Context): IRepository {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("mySharedPreferences", Context.MODE_PRIVATE)
     private val editor: SharedPreferences.Editor = sharedPreferences.edit()
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private var wordsAreLoadedInPrefs = CompletableDeferred<Boolean>()
 
-    fun getWord(index: Int): String {
+    override fun getWord(index: Int): String {
 
         val wordsAreLoaded = sharedPreferences.getBoolean(WORDS_ARE_LOADED, false)
 
