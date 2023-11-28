@@ -1,6 +1,6 @@
 package com.example.englishguru.app.features.words
 
-import android.content.Context
+import com.example.englishguru.data.models.Word
 
 interface IWordPresenter {
     fun getWord(): String

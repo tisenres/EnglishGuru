@@ -7,20 +7,24 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+
+const val WORDS_ARE_LOADED = "WORDS_ARE_LOADED"
 
 class SharedPrefsRepository(private val context: Context) {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("mySharedPreferences", Context.MODE_PRIVATE)
     private val editor: SharedPreferences.Editor = sharedPreferences.edit()
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private var wordsAreLoadedInPrefs = CompletableDeferred<Boolean>()
 
     fun getWord(index: Int): String {
-        if (!wordsAreLoadedInPrefs.isCompleted) {
+
+        val wordsAreLoaded = sharedPreferences.getBoolean(WORDS_ARE_LOADED, false)
+
+        if (!wordsAreLoaded) {
             loadWordsInSharedPrefs()
         }
         return getStringFromPrefs("word_$index")
@@ -29,24 +33,23 @@ class SharedPrefsRepository(private val context: Context) {
     private fun loadWordsInSharedPrefs() {
         coroutineScope.launch {
             try {
-                withContext(Dispatchers.IO) {
-                    val inputStream = context.resources.openRawResource(R.raw.oxford5000)
-                    inputStream.use { stream ->
-                        val inputStreamReader = InputStreamReader(stream)
-                        val bufferedReader = BufferedReader(inputStreamReader)
+                val inputStream = context.resources.openRawResource(R.raw.oxford5000)
+                inputStream.use { stream ->
+                    val inputStreamReader = InputStreamReader(stream)
+                    val bufferedReader = BufferedReader(inputStreamReader)
 
-                        val wordList = mutableListOf<Pair<String, String>>()
-                        var line: String?
-                        var counter = 0
+                    val wordList = mutableListOf<Pair<String, String>>()
+                    var line: String?
+                    var counter = 0
 
-                        while (bufferedReader.readLine().also { line = it } != null) {
-                            wordList.add("word_$counter" to (line ?: ""))
-                            counter++
-                        }
-
-                        saveStringListInPrefs(wordList)
-                        wordsAreLoadedInPrefs.complete(true)
+                    while (bufferedReader.readLine().also { line = it } != null) {
+                        wordList.add("word_$counter" to (line ?: ""))
+                        counter++
                     }
+
+                    saveStringListInPrefs(wordList)
+                    wordsAreLoadedInPrefs.complete(true)
+                    editor.putBoolean(WORDS_ARE_LOADED, true)
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
