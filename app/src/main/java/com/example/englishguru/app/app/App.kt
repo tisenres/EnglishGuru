@@ -14,6 +14,5 @@ class App: Application() {
             androidContext(this@App)
             modules(listOf(appModule, dataModule))
         }
-//        Realm.init(this)
     }
 }
