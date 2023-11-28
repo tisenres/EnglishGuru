@@ -5,148 +5,354 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/wordCard"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/wordsBlock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/wordCard"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/baseline_circle_24"
-                android:drawableTint="#E509E1"
-                android:drawablePadding="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="18sp"
-                android:text="Words" />
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
 
-            <TextView
-                android:id="@+id/word"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/wordsBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableStart="@drawable/baseline_circle_24"
+                        android:drawableTint="#E509E1"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp"
+                        android:text="Words" />
+
+                    <TextView
+                        android:id="@+id/word"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Example"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:layout_margin="20dp"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/definitionCard"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Example"
-                android:fontFamily="@font/product_sans_regular"
-                android:textColor="#777777"
-                android:textSize="15sp"
-                android:layout_margin="20dp"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                />
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/wordCard"
+                >
+
+                <LinearLayout
+                    android:id="@+id/definitionBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableStart="@drawable/baseline_circle_24"
+                        android:drawableTint="#09DEE5"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp"
+                        android:text="Definition" />
+
+                    <TextView
+                        android:id="@+id/definition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Example"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:layout_margin="20dp"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/examplesCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/definitionCard"
+                >
+
+                <LinearLayout
+                    android:id="@+id/examplesBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableStart="@drawable/baseline_circle_24"
+                        android:drawableTint="#0B16E5"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp"
+                        android:text="Examples" />
+
+                    <TextView
+                        android:id="@+id/examples"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Example"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:layout_margin="20dp"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/synonymsCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/examplesCard"
+                >
+
+                <LinearLayout
+                    android:id="@+id/synonymsBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableStart="@drawable/baseline_circle_24"
+                        android:drawableTint="#44E509"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp"
+                        android:text="Synonyms" />
+
+                    <TextView
+                        android:id="@+id/synonyms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Example"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:layout_margin="20dp"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/partOfSpeechCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/synonymsCard"
+                >
+
+                <LinearLayout
+                    android:id="@+id/partOfSpeechBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableStart="@drawable/baseline_circle_24"
+                        android:drawableTint="#DEE50B"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp"
+                        android:text="Part of speech" />
+
+                    <TextView
+                        android:id="@+id/partOfSpeech"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Example"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:layout_margin="20dp"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/similarToCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/partOfSpeechCard"
+                >
+
+                <LinearLayout
+                    android:id="@+id/similarToBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableStart="@drawable/baseline_circle_24"
+                        android:drawableTint="#E5690B"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp"
+                        android:text="Similar to" />
+
+                    <TextView
+                        android:id="@+id/similarTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Example"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:layout_margin="20dp"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/derivationCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/similarToCard"
+                >
+
+                <LinearLayout
+                    android:id="@+id/derivationBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:drawableStart="@drawable/baseline_circle_24"
+                        android:drawableTint="#0B8EE5"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/product_sans_bold"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp"
+                        android:text="Derivation" />
+
+                    <TextView
+                        android:id="@+id/derivation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Example"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:layout_margin="20dp"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/definitionCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wordCard"
-        >
-
-        <LinearLayout
-            android:id="@+id/definitionBlock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/baseline_circle_24"
-                android:drawableTint="#09DEE5"
-                android:drawablePadding="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="18sp"
-                android:text="Definition" />
-
-            <TextView
-                android:id="@+id/definition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Example"
-                android:fontFamily="@font/product_sans_regular"
-                android:textColor="#777777"
-                android:textSize="15sp"
-                android:layout_margin="20dp"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                />
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/synonymsCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/definitionCard"
-        >
-
-        <LinearLayout
-            android:id="@+id/synonymsBlock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/baseline_circle_24"
-                android:drawableTint="#44E509"
-                android:drawablePadding="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="18sp"
-                android:text="Synonyms" />
-
-            <TextView
-                android:id="@+id/synonyms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Example"
-                android:fontFamily="@font/product_sans_regular"
-                android:textColor="#777777"
-                android:textSize="15sp"
-                android:layout_margin="20dp"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                />
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

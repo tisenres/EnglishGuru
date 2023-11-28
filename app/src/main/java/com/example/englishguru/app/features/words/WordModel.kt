@@ -29,24 +29,25 @@ class WordModel(context: Context): IWordModel {
     }
 
     override fun increaseDaysForWord(increaseNum: Int) {
-        currentWord.dateToShow += increaseNum
-        currentWord.wasShown = true
+//        currentWord.dateToShow += increaseNum
+//        currentWord.wasShown = true
     }
 
-    private fun fetchWordDataRemotely(wordValue: String): Word? {
-        var word: Word? = null
-
+    private fun fetchWordDataRemotely(wordValue: String) {
         coroutineScope.launch(Dispatchers.IO) {
             try {
                 val response = wordsAPI.loadWordInfo(wordValue)
-                word = Word(word = response.word,
-                    definition = response.results[0].definition)
-                currentWord = word as Word
+                currentWord = Word(
+                    word = response.word,
+                    definition = response.results[0].definition,
+                    partOfSpeech = response.results[0].partOfSpeech ?: "",
+                    synonyms = response.results[0].synonyms,
+                    derivation = response.results[0].derivation ?: emptyList(),
+                    examples = response.results[0].examples
+                    )
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
-
-        return word
     }
 }

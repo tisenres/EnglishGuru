@@ -7,7 +7,7 @@ const val HARD_INCREASE = 1
 const val GOOD_INCREASE = 3
 const val EASY_INCREASE = 7
 
-class WordPresenter(private val fragment: IWordView, private val context: Context): IWordPresenter {
+class WordPresenter(private val fragment: IWordView, context: Context): IWordPresenter {
 
     private val model: IWordModel = WordModel(context)
 
@@ -35,8 +35,28 @@ class WordPresenter(private val fragment: IWordView, private val context: Contex
         fragment.showNextWord()
     }
 
-    override fun getWordDefinition(): String {
+    override fun getDefinition(): String {
         return model.getWordInfo().definition
+    }
+
+    override fun getPartOfSpeech(): String {
+        return model.getWordInfo().partOfSpeech
+    }
+
+    override fun getSynonyms(): List<String> {
+        return model.getWordInfo().synonyms
+    }
+
+    override fun getDerivation(): List<String> {
+        return model.getWordInfo().derivation
+    }
+
+    override fun getExamples(): List<String> {
+        return model.getWordInfo().examples
+    }
+
+    override fun getSimilarTo(): List<String> {
+        return model.getWordInfo().similarTo
     }
 
 }

@@ -94,6 +94,11 @@ class WordFragment : Fragment(), IWordView {
     private fun initWordInfoData() {
         binding.wordInfo.apply {
             word.text = presenter.getWord()
+            definition.text = presenter.getDefinition()
+            similarTo.text = presenter.getSimilarTo().toString()
+            examples.text = presenter.getExamples().toString()
+            synonyms.text = presenter.getSynonyms().toString()
+            partOfSpeech.text = presenter.getPartOfSpeech().toString()
         }
     }
 }
