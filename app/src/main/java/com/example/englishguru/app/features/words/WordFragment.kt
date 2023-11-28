@@ -20,32 +20,53 @@ class WordFragment : Fragment(), IWordView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentWordBinding.inflate(inflater, container, false)
         setOnClickListeners()
-        initViewAppearance()
+        initViewAppearanceBeforeAnswer()
         return binding.root
     }
 
-    private fun initViewAppearance() {
-        binding.showAnswerBtn.visibility = View.VISIBLE
-        binding.optionButtons.apply {
-            againBtn.visibility = View.GONE
-            hardBtn.visibility = View.GONE
-            goodBtn.visibility = View.GONE
-            easyBtn.visibility = View.GONE
+    private fun initViewAppearanceBeforeAnswer() {
+        binding.apply {
+            showAnswerBtn.visibility = View.VISIBLE
+            wordTv.visibility = View.VISIBLE
+            wordTv.text = presenter.getWord()
+            optionButtons.apply {
+                againBtn.visibility = View.GONE
+                hardBtn.visibility = View.GONE
+                goodBtn.visibility = View.GONE
+                easyBtn.visibility = View.GONE
+            }
+            wordInfo.apply {
+                text1.visibility = View.GONE
+                text2.visibility = View.GONE
+                text3.visibility = View.GONE
+                text4.visibility = View.GONE
+            }
         }
-        binding.wordTv.text = presenter.getWord()
+    }
+
+    private fun initViewAppearanceWhenWordInfo() {
+        binding.apply {
+            showAnswerBtn.visibility = View.GONE
+            wordTv.visibility = View.GONE
+            optionButtons.apply {
+                againBtn.visibility = View.VISIBLE
+                hardBtn.visibility = View.VISIBLE
+                goodBtn.visibility = View.VISIBLE
+                easyBtn.visibility = View.VISIBLE
+            }
+            wordInfo.apply {
+                text1.visibility = View.VISIBLE
+                text2.visibility = View.VISIBLE
+                text3.visibility = View.VISIBLE
+                text4.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun setOnClickListeners() {
         binding.showAnswerBtn.setOnClickListener {
-            binding.apply {
-                showAnswerBtn.visibility = View.GONE
-                optionButtons.apply {
-                    againBtn.visibility = View.VISIBLE
-                    hardBtn.visibility = View.VISIBLE
-                    goodBtn.visibility = View.VISIBLE
-                    easyBtn.visibility = View.VISIBLE
-                }
-            }
+            binding.wordTv.text = presenter.getWord()
+            initViewAppearanceWhenWordInfo()
         }
 
         binding.optionButtons.apply {
@@ -68,6 +89,6 @@ class WordFragment : Fragment(), IWordView {
     }
 
     override fun showNextWord() {
-        initViewAppearance()
+        initViewAppearanceBeforeAnswer()
     }
 }

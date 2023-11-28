@@ -34,4 +34,9 @@ class WordPresenter(private val fragment: IWordView, private val context: Contex
         model.increaseDaysForWord(EASY_INCREASE)
         fragment.showNextWord()
     }
+
+    override fun getWordDefinition(): String {
+        return model.getWordInfo().definition
+    }
+
 }
