@@ -1,6 +1,7 @@
 package com.example.englishguru.app.features.words
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,10 @@ class WordFragment : Fragment(), IWordView {
                 wordCard.visibility = View.GONE
                 definitionCard.visibility = View.GONE
                 synonymsCard.visibility = View.GONE
+                partOfSpeechCard.visibility = View.GONE
+                derivationCard.visibility = View.GONE
+                examplesCard.visibility = View.GONE
+                similarToCard.visibility = View.GONE
             }
         }
     }
@@ -57,6 +62,10 @@ class WordFragment : Fragment(), IWordView {
                 wordCard.visibility = View.VISIBLE
                 definitionCard.visibility = View.VISIBLE
                 synonymsCard.visibility = View.VISIBLE
+                partOfSpeechCard.visibility = View.VISIBLE
+                derivationCard.visibility = View.VISIBLE
+                examplesCard.visibility = View.VISIBLE
+                similarToCard.visibility = View.VISIBLE
             }
         }
         initWordInfoData()
@@ -64,7 +73,6 @@ class WordFragment : Fragment(), IWordView {
 
     private fun setOnClickListeners() {
         binding.showAnswerBtn.setOnClickListener {
-            binding.wordTv.text = presenter.getWord()
             initViewAppearanceWhenWordInfo()
         }
 
@@ -95,10 +103,10 @@ class WordFragment : Fragment(), IWordView {
         binding.wordInfo.apply {
             word.text = presenter.getWord()
             definition.text = presenter.getDefinition()
-            similarTo.text = presenter.getSimilarTo().toString()
-            examples.text = presenter.getExamples().toString()
-            synonyms.text = presenter.getSynonyms().toString()
-            partOfSpeech.text = presenter.getPartOfSpeech().toString()
+//            similarTo.text = presenter.getSimilarTo().toString()
+//            examples.text = presenter.getExamples().toString()
+//            synonyms.text = presenter.getSynonyms().toString()
+            partOfSpeech.text = presenter.getPartOfSpeech()
         }
     }
 }

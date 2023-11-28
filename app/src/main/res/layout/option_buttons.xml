@@ -4,6 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     >
 
     <com.google.android.material.button.MaterialButton
@@ -15,6 +16,10 @@
         android:backgroundTint="#E52EE1"
         android:text="@string/again"
         android:clickable="true"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
         android:focusable="true"
         android:fontFamily="@font/product_sans_regular"
         />
@@ -27,6 +32,10 @@
         android:layout_weight="1"
         android:backgroundTint="#DC670F"
         android:text="@string/hard"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/product_sans_regular"
@@ -40,6 +49,10 @@
         android:backgroundTint="#3AB6BA"
         android:clickable="true"
         android:focusable="true"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
         android:fontFamily="@font/product_sans_regular"
         android:text="@string/good"
         app:cornerRadius="0dp" />
@@ -52,6 +65,10 @@
         android:layout_weight="1"
         android:backgroundTint="#59C531"
         android:text="@string/easy"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/product_sans_regular"
