@@ -6,7 +6,7 @@ import com.example.englishguru.data.repository.IRepository
 import io.reactivex.disposables.Disposable
 import org.koin.java.KoinJavaComponent.getKoin
 
-const val TOTAL_NUMBER_OF_WORDS = 2978
+const val TOTAL_NUMBER_OF_WORDS = 4617
 
 class WordModel(private val port: OutputPortModel): IWordModel {
 
@@ -19,7 +19,7 @@ class WordModel(private val port: OutputPortModel): IWordModel {
     private var wordFetchDisposable: Disposable? = null
 
     override fun assignRandomWord() {
-        currentWordStr = sharedPrefsRepo.getWord((0..TOTAL_NUMBER_OF_WORDS).random())
+        currentWordStr = sharedPrefsRepo.getWord((0 until TOTAL_NUMBER_OF_WORDS).random())
     }
 
     override fun getWord(): String {

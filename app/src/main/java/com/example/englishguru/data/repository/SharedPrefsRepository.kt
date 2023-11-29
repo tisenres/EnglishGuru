@@ -33,7 +33,7 @@ class SharedPrefsRepository(private val context: Context): IRepository {
     private fun loadWordsInSharedPrefs() {
         coroutineScope.launch {
             try {
-                val inputStream = context.resources.openRawResource(R.raw.oxford5000)
+                val inputStream = context.resources.openRawResource(R.raw.oxford3000bycefr)
                 inputStream.use { stream ->
                     val inputStreamReader = InputStreamReader(stream)
                     val bufferedReader = BufferedReader(inputStreamReader)
