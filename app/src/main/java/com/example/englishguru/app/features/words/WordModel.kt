@@ -8,7 +8,7 @@ import org.koin.java.KoinJavaComponent.getKoin
 
 const val TOTAL_NUMBER_OF_WORDS = 4617
 
-class WordModel(private val port: OutputPortModel): IWordModel {
+class WordModel(private val port: OutputPortModel, private val startWordPos: Int, private val endWorPos: Int): IWordModel {
 
     private val sharedPrefsRepo: IRepository = getKoin().get()
     private val remote: IRemote = getKoin().get()
@@ -19,7 +19,7 @@ class WordModel(private val port: OutputPortModel): IWordModel {
     private var wordFetchDisposable: Disposable? = null
 
     override fun assignRandomWord() {
-        currentWordStr = sharedPrefsRepo.getWord((0 until TOTAL_NUMBER_OF_WORDS).random())
+        currentWordStr = sharedPrefsRepo.getWord((startWordPos..endWorPos).random())
     }
 
     override fun getWord(): String {

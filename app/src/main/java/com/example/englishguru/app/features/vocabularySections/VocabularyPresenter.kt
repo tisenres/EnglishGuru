@@ -5,18 +5,21 @@ class VocabularyPresenter(private val fragment: IVocabularyView): IVocabularyPre
     private val model: IVocabularyModel = VocabularyModel()
 
     override fun onButtonPressed(pos: Int) {
-        fragment.navigateToWordFragment()
+        fragment.navigateToWordFragment(
+            model.getSection(pos).startWordPos,
+            model.getSection(pos).endWordPos
+        )
     }
 
     override fun getSectionName(position: Int): String {
-        return model.getSections()[position].name
+        return model.getSection(position).name
     }
 
     override fun getSectionDescription(position: Int): String {
-        return model.getSections()[position].description
+        return model.getSection(position).description
     }
 
     override fun getNumberOfWords(position: Int): Int {
-        return model.getSections()[position].numberOfWords
+        return model.getSection(position).numberOfWords
     }
 }

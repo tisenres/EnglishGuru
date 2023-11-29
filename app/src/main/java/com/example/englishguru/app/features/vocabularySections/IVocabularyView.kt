@@ -1,6 +1,5 @@
 package com.example.englishguru.app.features.vocabularySections
 
 interface IVocabularyView {
-    fun navigateToWordFragment()
-
+    fun navigateToWordFragment(startWordPos: Int, endWordPos: Int)
 }

@@ -1,7 +1,6 @@
 package com.example.englishguru.app.features.words
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,26 @@ import androidx.fragment.app.Fragment
 import com.example.englishguru.data.models.Word
 import com.example.englishguru.databinding.FragmentWordBinding
 
-class WordFragment : Fragment(), IWordView {
+private const val START_WORD_POS = "START_WORD_POS"
+private const val END_WORD_POS = "END_WORD_POS"
+
+class WordFragment: Fragment(), IWordView {
 
     private lateinit var binding: FragmentWordBinding
     private lateinit var presenter: IWordPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = WordPresenter(this)
+
+        var startWordPos: Int? = null
+        var endWordPos: Int? = null
+
+        arguments?.let {
+            startWordPos = it.getInt(START_WORD_POS)
+            endWordPos = it.getInt(END_WORD_POS)
+        }
+
+        presenter = WordPresenter(this, startWordPos ?: 0, endWordPos?: 0)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

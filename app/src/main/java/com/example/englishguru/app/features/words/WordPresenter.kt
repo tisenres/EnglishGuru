@@ -1,6 +1,5 @@
 package com.example.englishguru.app.features.words
 
-import android.content.Context
 import com.example.englishguru.data.models.Word
 
 const val AGAIN_INCREASE = 0
@@ -8,9 +7,9 @@ const val HARD_INCREASE = 1
 const val GOOD_INCREASE = 3
 const val EASY_INCREASE = 7
 
-class WordPresenter(private val fragment: IWordView): IWordPresenter, OutputPortModel {
+class WordPresenter(private val fragment: IWordView, startWordPos: Int, endWorPos: Int): IWordPresenter, OutputPortModel {
 
-    private val model: IWordModel = WordModel(this)
+    private val model: IWordModel = WordModel(this, startWordPos, endWorPos)
 
     override fun onViewCreated() {
         model.assignRandomWord()

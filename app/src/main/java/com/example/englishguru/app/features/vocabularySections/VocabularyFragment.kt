@@ -21,9 +21,9 @@ class VocabularyFragment: Fragment(), IVocabularyView {
         adapter = SectionsAdapter(presenter)
     }
 
-    override fun navigateToWordFragment() {
+    override fun navigateToWordFragment(startWordPos: Int, endWordPos: Int) {
         val mainActivity = activity as? MainActivity
-        mainActivity?.navigateToWordFragment()
+        mainActivity?.navigateToWordFragment(startWordPos, endWordPos)
     }
 
     override fun onCreateView(
