@@ -43,6 +43,7 @@ class WordFragment: Fragment(), IWordView {
 
     override fun showWordTitle(wordStr: String) {
         binding.wordTitle.text = wordStr
+        binding.showAnswerBtn.text = "Show answer"
         setupTitleVisibility()
     }
 
@@ -51,7 +52,8 @@ class WordFragment: Fragment(), IWordView {
             wordTitle.visibility = View.VISIBLE
             showAnswerBtn.visibility = View.VISIBLE
             wordInfo.root.visibility = View.GONE
-            optionButtons.root.visibility = View.GONE
+            showNextBtn.visibility = View.GONE
+//            optionButtons.root.visibility = View.GONE
         }
     }
 
@@ -59,8 +61,10 @@ class WordFragment: Fragment(), IWordView {
         binding.apply {
             wordTitle.visibility = View.GONE
             showAnswerBtn.visibility = View.GONE
-            optionButtons.root.visibility = View.VISIBLE
+//            optionButtons.root.visibility = View.VISIBLE
             wordInfo.root.visibility = View.VISIBLE
+            showNextBtn.visibility = View.VISIBLE
+
         }
     }
 
@@ -73,25 +77,32 @@ class WordFragment: Fragment(), IWordView {
         binding.showAnswerBtn.setOnClickListener {
             presenter.onShowAnswerButtonPressed()
         }
-
-        binding.optionButtons.apply {
-            againBtn.setOnClickListener {
-                presenter.onAgainButtonPressed()
-            }
-
-            hardBtn.setOnClickListener {
-                presenter.onHardButtonPressed()
-            }
-
-            goodBtn.setOnClickListener {
-                presenter.onGoodButtonPressed()
-            }
-
-            easyBtn.setOnClickListener {
-                presenter.onEasyButtonPressed()
-            }
+        binding.showNextBtn.setOnClickListener {
+            presenter.onViewCreated()
         }
-    }
+
+//        binding.optionButtons.apply {
+//            againBtn.setOnClickListener {
+//                presenter.onAgainButtonPressed()
+//            }
+//
+//            hardBtn.setOnClickListener {
+//                presenter.onHardButtonPressed()
+//            }
+//
+//            goodBtn.setOnClickListener {
+//                presenter.onGoodButtonPressed()
+//            }
+//
+//            easyBtn.setOnClickListener {
+//                presenter.onEasyButtonPressed()
+//            }
+//        }
+}
+
+//    override fun initButtonToShowNextMode() {
+//        binding.showAnswerBtn.text = "Next word"
+//    }
 
     override fun showWordDetails() {
         setupDetailsVisibility()
@@ -106,6 +117,17 @@ class WordFragment: Fragment(), IWordView {
             partOfSpeech.text = wordInfo.partOfSpeech
             similarTo.text = wordInfo.similarTo.joinToString("\n")
             derivation.text = wordInfo.derivation.joinToString("\n")
+        }
+    }
+
+    override fun setUpVisibilityForEmptyCards() {
+        binding.wordInfo.apply {
+            if (definition.text == "") definitionCard.visibility = View.GONE
+            if (examples.text == "") examplesCard.visibility = View.GONE
+            if (synonyms.text == "") synonymsCard.visibility = View.GONE
+            if (partOfSpeech.text == "") partOfSpeechCard.visibility = View.GONE
+            if (similarTo.text == "") similarToCard.visibility = View.GONE
+            if (derivation.text == "") derivationCard.visibility = View.GONE
         }
     }
 }

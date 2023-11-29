@@ -2,11 +2,6 @@ package com.example.englishguru.app.features.words
 
 import com.example.englishguru.data.models.Word
 
-const val AGAIN_INCREASE = 0
-const val HARD_INCREASE = 1
-const val GOOD_INCREASE = 3
-const val EASY_INCREASE = 7
-
 class WordPresenter(private val fragment: IWordView, startWordPos: Int, endWorPos: Int): IWordPresenter, OutputPortModel {
 
     private val model: IWordModel = WordModel(this, startWordPos, endWorPos)
@@ -22,28 +17,34 @@ class WordPresenter(private val fragment: IWordView, startWordPos: Int, endWorPo
         fragment.showWordDetails()
     }
 
-    override fun onAgainButtonPressed() {
+//    override fun onAgainButtonPressed() {
+//        model.saveWordToShowLately()
 //        model.increaseDaysForWord(AGAIN_INCREASE)
 //        fragment.showNextWord()
-    }
+//        onViewCreated()
+//    }
 
-    override fun onHardButtonPressed() {
+//    override fun onHardButtonPressed() {
 //        model.increaseDaysForWord(HARD_INCREASE)
 //        fragment.showNextWord()
-    }
+//        onViewCreated()
+//    }
 
-    override fun onGoodButtonPressed() {
+//    override fun onGoodButtonPressed() {
 //        model.increaseDaysForWord(GOOD_INCREASE)
 //        fragment.showNextWord()
-    }
+//        onViewCreated()
+//    }
 
-    override fun onEasyButtonPressed() {
+//    override fun onEasyButtonPressed() {
 //        model.increaseDaysForWord(EASY_INCREASE)
 //        fragment.showNextWord()
-    }
+//        onViewCreated()
+//    }
 
     override fun onFetchComplete(word: Word) {
         fragment.fillWordDetails(word)
+        fragment.setUpVisibilityForEmptyCards()
     }
 
     override fun onDestroyView() {

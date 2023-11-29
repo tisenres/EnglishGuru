@@ -2,10 +2,18 @@
     <string name="app_name">EnglishGuru</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test">Test</string>
-    <string name="show_answer">SHOW ANSWER</string>
+    <string name="show_answer">Show answer</string>
     <string name="learn">Learn</string>
     <string name="again">Again</string>
     <string name="hard">Hard</string>
     <string name="good">Good</string>
     <string name="easy">Easy</string>
+    <string name="words">Words</string>
+    <string name="definition">Definition</string>
+    <string name="examples">Examples</string>
+    <string name="synonyms">Synonyms</string>
+    <string name="part_of_speech">Part of speech</string>
+    <string name="similar_to">Similar to</string>
+    <string name="derivation">Derivation</string>
+    <string name="next_word">Next word</string>
 </resources>

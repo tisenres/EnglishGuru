@@ -5,6 +5,7 @@ import com.example.englishguru.data.network.IRemote
 import com.example.englishguru.data.repository.IRepository
 import io.reactivex.disposables.Disposable
 import org.koin.java.KoinJavaComponent.getKoin
+import java.time.LocalDateTime
 
 const val TOTAL_NUMBER_OF_WORDS = 4617
 
@@ -60,6 +61,11 @@ class WordModel(private val port: OutputPortModel, private val startWordPos: Int
     override fun onDestroyView() {
         wordFetchDisposable?.dispose()
     }
+
+//    override fun saveWordToShowLately() {
+//        val daysOfYearStr = LocalDateTime.now().dayOfYear.toString()
+//        sharedPrefsRepo.saveCurrentDateByWord(daysOfYearStr)
+//    }
 
     override fun increaseDaysForWord(increaseNum: Int) {
 //        currentWord.dateToShow += increaseNum

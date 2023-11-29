@@ -9,7 +9,7 @@
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     tools:text="Section description"
                     android:fontFamily="@font/product_sans_regular"
-                    android:textColor="#777777"
+                    android:textColor="@color/colorGray"
                     android:textSize="18sp"
                     android:layout_margin="20dp"
                     android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -63,7 +63,8 @@
                     android:textSize="20sp"
                     android:fontFamily="@font/product_sans_bold"
                     android:text="@string/learn"
-                    android:backgroundTint="#25733B"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@color/white"
                     style="@style/Widget.Material3.Button"
                     />
 
