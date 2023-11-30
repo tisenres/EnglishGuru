@@ -20,7 +20,7 @@ class WordModel(private val port: OutputPortModel, private val startWordPos: Int
     private var wordFetchDisposable: Disposable? = null
 
     override fun assignRandomWord() {
-        currentWordStr = sharedPrefsRepo.getWord((startWordPos..endWorPos).random())
+        currentWordStr = sharedPrefsRepo.getWord((startWordPos..endWorPos).random()).trim()
     }
 
     override fun getWord(): String {

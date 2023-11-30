@@ -60,20 +60,6 @@
         android:focusable="true"
         android:layout_margin="15dp"/>
 
-<!--    <include-->
-<!--        android:id="@+id/optionButtons"-->
-<!--        layout="@layout/option_buttons"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:insetTop="0dp"-->
-<!--        android:insetBottom="0dp"-->
-<!--        android:insetLeft="0dp"-->
-<!--        android:insetRight="0dp"-->
-<!--        />-->
-
     <include
         android:id="@+id/wordInfo"
         layout="@layout/word_info"
