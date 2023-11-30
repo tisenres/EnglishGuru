@@ -7,7 +7,7 @@ class TranslatorPresenter(private val fragment: ITranslatorView) : ITranslatorPr
     override fun onFetchComplete() {
     }
 
-    override fun translateText(s: String, s1: String, s2: String, deeplApiKey: String) {
-        model.fetchWordDataRemotely(s, s1, s2, deeplApiKey)
+    override fun translateText(apiKey: String, query: String, source: String, target: String) {
+        model.fetchWordDataRemotely(apiKey, query, source, target)
     }
 }

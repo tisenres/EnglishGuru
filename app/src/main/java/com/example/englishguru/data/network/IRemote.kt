@@ -9,5 +9,5 @@ interface IRemote {
                              text: String,
                              sourceLang: String,
                              targetLang: String
-    ): Observable<TransResponse>
+    ): Single<TransResponse>
 }

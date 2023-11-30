@@ -1,6 +1,6 @@
 package com.example.englishguru.app.features.translator
 
 interface ITranslatorPresenter {
-    fun translateText(s: String, s1: String, s2: String, deeplApiKey: String)
+    fun translateText(apiKey: String, query: String, source: String, target: String)
 
 }
