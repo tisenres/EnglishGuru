@@ -16,8 +16,8 @@ class TranslatorFragment : Fragment(), ITranslatorView, AdapterView.OnItemSelect
     private lateinit var binding: FragmentTranslatorBinding
     private lateinit var presenter: ITranslatorPresenter
 
-    private var sourceLangCode: String = "en"
-    private var targetLangCode: String = "en"
+    private var sourceLangCode: String = LanguageModel.getLanguageCodeByName("English")
+    private var targetLangCode: String = LanguageModel.getLanguageCodeByName("English")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -2,12 +2,14 @@
     <style name="Base.Theme.EnglishGuru" parent="Theme.Material3.DayNight.NoActionBar">
          <item name="colorPrimary">@color/colorPrimary</item>
          <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+         <item name="colorPrimaryVariant">@color/colorGray</item>
          <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="Dark.Theme.EnglishGuru" parent="Base.Theme.EnglishGuru" >
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>

@@ -62,7 +62,6 @@
             android:textAppearance="?attr/textAppearanceTitleMedium"
             android:textSize="16sp"
             tools:text="Source lang"
-            android:textColor="@color/colorPrimaryDark"
             />
         <EditText
             android:id="@+id/sourceText"
@@ -74,7 +73,8 @@
             android:background="@drawable/no_underline_edittext"
             android:gravity="top|left"
             android:textSize="16sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint=""
+            style="@style/Base.Theme.EnglishGuru"
             />
 
     </LinearLayout>
@@ -99,6 +99,7 @@
             android:fontFamily="@font/product_sans_bold"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"
             tools:text="Target lang" />
 
         <TextView
