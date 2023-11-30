@@ -7,6 +7,31 @@
     tools:context=".app.features.main.MainActivity">
 
     <LinearLayout
+        android:id="@+id/spinnerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Spinner
+            android:id="@+id/sourceSpinner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"/>
+
+        <Spinner
+            android:id="@+id/targetSpinner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/inputSourceLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -15,7 +40,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/spinnerLayout">
 
         <TextView
             android:layout_width="wrap_content"

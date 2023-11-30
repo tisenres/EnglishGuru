@@ -10,9 +10,9 @@ android {
     namespace = "com.example.englishguru"
     compileSdk = 34
 
-    packagingOptions {
-        resources.excludes.add("META-INF/*")
-    }
+//    packagingOptions {
+//        resources.excludes.add("META-INF/*")
+//    }
 
 //    packagingOptions {
 //        resources.excludes.add("META-INF/INDEX.LIST")
