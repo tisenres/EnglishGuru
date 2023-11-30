@@ -99,4 +99,9 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
 
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+
+    implementation("ai.api:sdk:2.0.7@aar")
+    implementation("ai.api:libai:1.6.12")
+    implementation("com.google.code.gson:gson:2.8.9")
+
 }
