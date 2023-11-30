@@ -28,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:scaleType="centerCrop"
-                android:contentDescription="YTstdtrsd"
                 />
 
             <TextView
@@ -40,6 +39,7 @@
                 android:fontFamily="@font/product_sans_bold"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
                 android:textSize="23sp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:text="Section name" />
 
                 <TextView
