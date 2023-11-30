@@ -8,7 +8,6 @@ class TranslatorModel(private val port: TransModelOutputPort) : ITranslatorModel
 
     private val remote: IRemote = KoinJavaComponent.getKoin().get()
     private var transFetchDisposable: Disposable? = null
-    private val languages: MutableList<String> = mutableListOf("en", "ru", "du", "uz", "fr", "es", "hi", "tr", "uk", "cz")
 
     override fun fetchWordDataRemotely(
         text: String,
@@ -23,10 +22,5 @@ class TranslatorModel(private val port: TransModelOutputPort) : ITranslatorModel
             }, { error ->
                 error.printStackTrace()
             })
-    }
-
-    override fun getLanguageByPos(selectedSourceLanguage: String): String {
-//        return languages[selectedSourceLanguage]
-        return ""
     }
 }

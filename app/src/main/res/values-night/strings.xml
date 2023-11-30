@@ -19,4 +19,17 @@
     <string name="next_word">Next word</string>
     <string name="type_to_translate">Type to translate</string>
     <string name="translate">Translate</string>
+
+    <string-array name="lang_array">
+        <item>English</item>
+        <item>Russian</item>
+        <item>German</item>
+        <item>Uzbek</item>
+        <item>French</item>
+        <item>Spain</item>
+        <item>Hindi</item>
+        <item>Turkish</item>
+        <item>Ukrainian</item>
+        <item>Czech</item>
+    </string-array>
 </resources>

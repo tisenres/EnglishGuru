@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.englishguru.R
+import com.example.englishguru.app.features.translator.models.LanguageModel
 import com.example.englishguru.databinding.FragmentTranslatorBinding
 
 class TranslatorFragment : Fragment(), ITranslatorView, AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: FragmentTranslatorBinding
     private lateinit var presenter: ITranslatorPresenter
+
+    private var sourceLangCode: String = "en"
+    private var targetLangCode: String = "en"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +60,7 @@ class TranslatorFragment : Fragment(), ITranslatorView, AdapterView.OnItemSelect
     private fun setOnClickListeners() {
         binding.translateBtn.setOnClickListener {
             val textToTranslate = binding.sourceText.text.toString()
-            presenter.onTranslateButtonPressed(textToTranslate, "en", "es")
+            presenter.onTranslateButtonPressed(textToTranslate, sourceLangCode, targetLangCode)
         }
     }
 
@@ -68,16 +72,18 @@ class TranslatorFragment : Fragment(), ITranslatorView, AdapterView.OnItemSelect
         when (parent?.id) {
             R.id.sourceSpinner -> {
                 val selectedSourceLanguage = parent.getItemAtPosition(position) as String
-                presenter.getLanguageByPos(selectedSourceLanguage)
+                sourceLangCode = LanguageModel.getLanguageCodeByName(selectedSourceLanguage)
+                binding.sourceHeader.text = selectedSourceLanguage
             }
             R.id.targetSpinner -> {
                 val selectedTargetLanguage = parent.getItemAtPosition(position) as String
-//                presenter.getLanguageByPos(selectedTargetLanguage)
+                targetLangCode = LanguageModel.getLanguageCodeByName(selectedTargetLanguage)
+                binding.targetHeader.text = selectedTargetLanguage
             }
         }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+
     }
 }

@@ -15,8 +15,4 @@ class TranslatorPresenter(private val fragment: ITranslatorView) : ITranslatorPr
     ) {
         model.fetchWordDataRemotely(textToTranslate, sourceLang, targetLang)
     }
-
-    override fun getLanguageByPos(selectedSourceLanguage: String): String {
-        return model.getLanguageByPos(selectedSourceLanguage)
-    }
 }

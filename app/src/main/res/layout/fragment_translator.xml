@@ -52,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@id/spinnerLayout">
 
         <TextView
+            android:id="@+id/sourceHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -89,6 +90,7 @@
         app:layout_constraintTop_toBottomOf="@id/inputSourceLayout">
 
         <TextView
+            android:id="@+id/targetHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
