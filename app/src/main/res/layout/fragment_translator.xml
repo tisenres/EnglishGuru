@@ -11,9 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:padding="10dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/gray_border"
         app:layout_constraintStart_toStartOf="parent">
 
         <Spinner
@@ -21,14 +23,21 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"/>
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_right_alt_24" />
 
         <Spinner
             android:id="@+id/targetSpinner"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"/>
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <LinearLayout
@@ -52,6 +61,7 @@
             android:textAppearance="?attr/textAppearanceTitleMedium"
             android:textSize="16sp"
             tools:text="Source lang"
+            android:textColor="@color/colorPrimaryDark"
             />
         <EditText
             android:id="@+id/sourceText"
@@ -63,6 +73,7 @@
             android:background="@drawable/no_underline_edittext"
             android:gravity="top|left"
             android:textSize="16sp"
+            android:textColor="@color/colorPrimaryDark"
             />
 
     </LinearLayout>
@@ -95,6 +106,8 @@
             android:layout_margin="20dp"
             android:fontFamily="@font/product_sans_regular"
             android:textSize="16sp"
+            android:ellipsize="end"
+            android:textColor="@color/colorPrimaryDark"
             />
     </LinearLayout>
 

@@ -1,6 +1,5 @@
 package com.example.englishguru.app.features.translator
 
-import android.util.Log
 import com.example.englishguru.data.network.IRemote
 import io.reactivex.disposables.Disposable
 import org.koin.java.KoinJavaComponent
@@ -9,6 +8,7 @@ class TranslatorModel(private val port: TransModelOutputPort) : ITranslatorModel
 
     private val remote: IRemote = KoinJavaComponent.getKoin().get()
     private var transFetchDisposable: Disposable? = null
+    private val languages: MutableList<String> = mutableListOf("en", "ru", "du", "uz", "fr", "es", "hi", "tr", "uk", "cz")
 
     override fun fetchWordDataRemotely(
         text: String,
@@ -23,5 +23,10 @@ class TranslatorModel(private val port: TransModelOutputPort) : ITranslatorModel
             }, { error ->
                 error.printStackTrace()
             })
+    }
+
+    override fun getLanguageByPos(selectedSourceLanguage: String): String {
+//        return languages[selectedSourceLanguage]
+        return ""
     }
 }

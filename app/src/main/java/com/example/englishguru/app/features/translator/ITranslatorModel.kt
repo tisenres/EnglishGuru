@@ -6,4 +6,6 @@ interface ITranslatorModel {
         sourceLang: String,
         targetLang: String
     )
+
+    fun getLanguageByPos(selectedSourceLanguage: String): String
 }
