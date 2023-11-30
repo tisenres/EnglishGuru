@@ -16,4 +16,6 @@
     <string name="similar_to">Similar to</string>
     <string name="derivation">Derivation</string>
     <string name="next_word">Next word</string>
+    <string name="type_to_translate">Type to translate</string>
+    <string name="translate">Translate</string>
 </resources>

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.englishguru.app.features.chatbot.WordChatFragment
 import com.example.englishguru.app.features.translator.TranslatorFragment
 import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
@@ -32,13 +31,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<TranslatorFragment>(binding.fragmentContainer.id)
-        }
-    }
-
-    private fun initChatBotFragment() {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<WordChatFragment>(binding.fragmentContainer.id)
         }
     }
 

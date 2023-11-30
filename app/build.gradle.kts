@@ -109,16 +109,4 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
 
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
-
-    implementation("ai.api:sdk:2.0.7@aar")
-    implementation("ai.api:libai:1.6.12")
-    implementation("com.google.code.gson:gson:2.10.1")
-
-//    implementation("ai.api:sdk:2.0.7@aar")
-//    implementation("ai.api:sdk:2.0.7")
-//    implementation("ai.api:libai:1.6.12")
-//    implementation("com.google.cloud:google-cloud-dialogflow:4.36.0")
-//    implementation("com.google.code.gson:gson:2.10.1")
-//    implementation("com.google.protobuf:protobuf-java:3.24.4")
-//    implementation("com.google.cloud:libraries-speech:2.3.1")
 }

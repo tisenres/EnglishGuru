@@ -30,6 +30,6 @@ class TranslatorFragment : Fragment(), ITranslatorView {
 
         val apiKey = "8f6dc7db8amsh49a9ed984e64e9dp1f16d5jsn18b2f9e1fe68"
 
-        presenter.translateText(apiKey, "Hello, world!", "en", "ru")
+        presenter.translateText(apiKey, "Hello, world!", "en", "es")
     }
 }
