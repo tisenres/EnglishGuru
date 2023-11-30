@@ -1,13 +1,11 @@
 package com.example.englishguru.app.features.chatbot
 
-// ChatAdapter.kt
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mychatbot.Message
-import com.example.mychatbot.R
+import com.example.englishguru.R
 
 class ChatAdapter(private val messages: List<Message>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

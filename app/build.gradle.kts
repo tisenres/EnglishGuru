@@ -103,5 +103,7 @@ dependencies {
     implementation("ai.api:sdk:2.0.7@aar")
     implementation("ai.api:libai:1.6.12")
     implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.google.cloud:google-cloud-dialogflow:0.92.0-alpha")
+    implementation("com.google.protobuf:protobuf-java:3.19.3")
 
 }
