@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.example.englishguru.app.features.chatbot.WordChatFragment
 import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
 import com.example.englishguru.databinding.ActivityMainBinding
@@ -21,7 +22,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initVocabularyFragment()
+//        initVocabularyFragment()
+        initChatBotFragment()
+    }
+
+    private fun initChatBotFragment() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<WordChatFragment>(binding.fragmentContainer.id)
+        }
     }
 
     private fun initVocabularyFragment() {

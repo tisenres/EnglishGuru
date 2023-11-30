@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:hint="Type a message..."
+        android:layout_toLeftOf="@id/sendButton"
         android:inputType="textMultiLine"
         android:maxLines="3"
         android:padding="16dp" />
@@ -25,7 +26,8 @@
         android:id="@+id/sendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/cardview_dark_background"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@id/messageInput"
+        android:layout_alignParentEnd="true"
         android:text="Send" />
 </RelativeLayout>

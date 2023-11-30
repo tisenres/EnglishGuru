@@ -1,20 +1,21 @@
 package com.example.englishguru.app.features.chatbot
 
+import ai.api.android.AIConfiguration;
 import com.example.englishguru.databinding.FragmentWordChatBinding
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import ai.api.AIConfiguration
 import ai.api.android.AIDataService
 import ai.api.model.AIRequest
 import ai.api.model.AIResponse
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 const val KEY = "7b69e2c78edcd78c31b391afdcd2750dde1f7d6c"
 
@@ -41,7 +42,7 @@ class WordChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.chatRecyclerView.adapter = adapter
-        binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.chatRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         binding.sendButton.setOnClickListener {
             val userMessage = binding.messageInput.text.toString()
@@ -51,13 +52,14 @@ class WordChatFragment : Fragment() {
         }
 
         val config = AIConfiguration(KEY,
-            AIConfiguration.SupportedLanguages.English,
+            ai.api.AIConfiguration.SupportedLanguages.English,
             AIConfiguration.RecognitionEngine.System)
 
-        aiDataService = AIDataService(config)
+        aiDataService = AIDataService(requireContext(), config)
     }
 
     private fun sendMessage(message: Message) {
+        Log.d("MESSAGEMY", message.text)
         messages.add(message)
         adapter.notifyDataSetChanged()
     }
@@ -66,17 +68,46 @@ class WordChatFragment : Fragment() {
         val request = AIRequest()
         request.setQuery(query)
 
+//        CoroutineScope(Dispatchers.IO).launch {
+//            try {
+//                val response: AIResponse = aiDataService.request(request)
+//                val botMessage = response.result.fulfillment.speech
+//
+//                withContext(Dispatchers.Main) {
+//                    sendMessage(Message(botMessage, false))
+//                    Log.d("SDSDSDSDSDSDSDSDSD", botMessage.toString())
+//                }
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//        }
+
+         var response: AIResponse? = null
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response: AIResponse = aiDataService.request(request)
-                val botMessage = response.result.fulfillment.speech
+                response = aiDataService.request(request)
 
-                CoroutineScope(Dispatchers.Main).launch {
-                    sendMessage(Message(botMessage, false))
+                // Log entire response
+                Log.d("AIResponse", "Full Response: $response")
+
+                // Check for null values before accessing specific fields
+                response?.result?.let { result ->
+                    val botMessage = result.fulfillment?.speech
+                    Log.d("AIResponse", "Bot Message: $botMessage")
+
+                    // Rest of your processing...
+                }
+
+                withContext(Dispatchers.Main) {
+                    // Update UI or perform other tasks on the main thread
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
+
+        Log.d("SDJHSHJDHJSDsd", response?.result.toString())
+
     }
 }
