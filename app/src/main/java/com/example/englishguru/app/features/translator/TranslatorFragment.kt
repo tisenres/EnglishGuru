@@ -27,5 +27,9 @@ class TranslatorFragment : Fragment(), ITranslatorView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val deeplApiKey = "YOUR_DEEPL_API_KEY"
+
+        presenter.translateText("Hello, world!", "en", "es", deeplApiKey)
     }
 }

@@ -11,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 private const val BASE_WORD_URL = "https://wordsapiv1.p.rapidapi.com/"
-private const val BASE_TRANS_URL = "https://wordsapiv1.p.rapidapi.com/"
+private const val BASE_TRANS_URL = "https://api-free.deepl.com/"
 
 class Remote: IRemote {
 
@@ -51,13 +51,13 @@ class Remote: IRemote {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun fetchTranlationData(
+    override fun fetchTranslationData(
         apiKey: String,
         text: String,
         sourceLang: String,
         targetLang: String
     ): Observable<TransResponse> {
-        return translateAPI.fetchTranlationData(apiKey, text, sourceLang, targetLang)
+        return translateAPI.fetchTranslationData(apiKey, text, sourceLang, targetLang)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

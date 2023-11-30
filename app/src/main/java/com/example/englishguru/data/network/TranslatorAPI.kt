@@ -9,7 +9,7 @@ interface TranslatorAPI {
 
     @FormUrlEncoded
     @POST("v2/translate")
-    fun fetchTranlationData(
+    fun fetchTranslationData(
         @Field("auth_key") apiKey: String,
         @Field("text") text: String,
         @Field("source_lang") sourceLang: String,
