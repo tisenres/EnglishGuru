@@ -11,17 +11,15 @@ class TranslatorModel(private val port: TransModelOutputPort) : ITranslatorModel
     private var transFetchDisposable: Disposable? = null
 
     override fun fetchWordDataRemotely(
-        apiKey: String,
         text: String,
         sourceLang: String,
         targetLang: String
     ) {
         transFetchDisposable?.dispose()
 
-        transFetchDisposable = remote.fetchTranslationData(apiKey, text, sourceLang, targetLang)
+        transFetchDisposable = remote.fetchTranslationData(text, sourceLang, targetLang)
             .subscribe({ response ->
-                port.onFetchComplete()
-                Log.d("RESPONSESEEEE", response.data.translations[0].translatedText)
+                port.onFetchComplete(response.data.translations[0].translatedText)
             }, { error ->
                 error.printStackTrace()
             })

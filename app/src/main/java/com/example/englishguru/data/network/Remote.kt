@@ -52,12 +52,11 @@ class Remote: IRemote {
     }
 
     override fun fetchTranslationData(
-        apiKey: String,
         text: String,
         sourceLang: String,
         targetLang: String
     ): Single<TransResponse> {
-        return translateAPI.fetchTranslationData(apiKey, text, sourceLang, targetLang)
+        return translateAPI.fetchTranslationData(text, sourceLang, targetLang)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

@@ -4,10 +4,15 @@ class TranslatorPresenter(private val fragment: ITranslatorView) : ITranslatorPr
 
     private val model: ITranslatorModel = TranslatorModel(this)
 
-    override fun onFetchComplete() {
+    override fun onFetchComplete(response: String) {
+        fragment.initTargetTextField(response)
     }
 
-    override fun translateText(apiKey: String, query: String, source: String, target: String) {
-        model.fetchWordDataRemotely(apiKey, query, source, target)
+    override fun onTranslateButtonPressed(
+        textToTranslate: String,
+        sourceLang: String,
+        targetLang: String
+    ) {
+        model.fetchWordDataRemotely(textToTranslate, sourceLang, targetLang)
     }
 }

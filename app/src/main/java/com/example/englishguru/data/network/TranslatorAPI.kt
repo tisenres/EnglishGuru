@@ -13,8 +13,8 @@ interface TranslatorAPI {
 
     @POST("language/translate/v2")
     @FormUrlEncoded
+    @Headers("X-RapidAPI-Key: 8f6dc7db8amsh49a9ed984e64e9dp1f16d5jsn18b2f9e1fe68")
     fun fetchTranslationData(
-        @Header("X-RapidAPI-Key") apiKey: String,
         @Field("q") text: String,
         @Field("source") sourceLang: String,
         @Field("target") targetLang: String
