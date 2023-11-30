@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "englishguru-xfad",
+  "private_key_id": "172eb1b96cecd51b1d358d70fbebfee6af5e7f1d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDJ9ybQ2AxaYdT2\nGjylgUiV11uzMkgl/BjMPt4csk+DCVXV08jfJ4F7sMnib84em4Q6Lhb3ilReESiq\nF/fCB/z8ilCeh+TzemSVQ10thayONGKCWHVe9S9y4wTOQFLC1sSFzXsvE/2/xS8f\ndwNhjII+v4S8kAjJYKNVkWZ97dEWoa6q+xjZfJ+m+Jcvwz06MdCiNWJJLZ6xvrj4\nG7xlMiPbTNsvMX9J4349U9GAX/eVNayYF+Y4Q+IzsnK6vHPZVKYVXuyZwYZO7ToK\niDSjkxQk6yZkXPPWFs9j0+X+lLl99FKa8sIcplKbxRn7NcN2EOXX0dF2vikSWEyr\nWdSWc3j9AgMBAAECggEADlKuiEeWIq/G+lgUfnlLdEL0YCI7/yOgf5Wiy16y6FxY\nX8R3/alv052PR7V9pOqLB1Q+8Tm4b35gh6WQ/svxu1g0zPVevYyrxvEi0chl2yTo\nao2K71vMjGWAsP7bT7GK+OFAb++HQpshkyXt0bR1BS2wZG4DjYKCut4Hqn0b47Kd\nvtZo5+YiOJJ+0SMe++tArrnzZWuQoyYpYE/DLp8eCfwA1SocY4b3T8dxgZjf8WB0\nAYSH1e/PESOrl48cer8ip/bL50ylf1KTDWMdx+Lf+K4xw3TwBUcJUOKiHPnmAmq9\n8FOZj9uuPirOTyFda9YQqHO/4zuFoKqGL8UtyWNLCQKBgQD9jOdL+AjfLHcG94Fz\nL2gUrpDKLNwJxJUzPkg2QjI19TKA309QNOQKjB+1MinefA6Ho/UNdPhs8ICzyVGB\nsCwYxQqCXOeYq5Y1yEN8U1es6eRvZuCELB2dHEBCtJmCVqDpX0ltFVl+bI9YZQln\njyPexZ/JvO64GTOh7lKVFENOZQKBgQDL6qo9Mz6Qq9GWaLQhJk0qC3xEwOauZzCu\nchAHuEPSIfkYIzBaloOAmFWgA6qh2VybOgf5vnskyvffA8agCzA2qrSex3VZTuXO\nRLXRf7BjW64GT7lNIWX9JSP2XyxAZ00484gR2LPWYdqO3/UqYzAkt5fecax5Es1m\nb6zfK1JquQKBgEabGEXVelL7hOHRxqCW0PsBaZyDRXsK3Sl57I3/fQ/9ieTNSr7h\nG6e8QZApufMUxM8M306yBgQALTbjlujwcDctl7GZwXyIO7oaXICgjMfAEjbbhSYJ\nSu3XUiXBOQZMrV6PhFj2GwfTn09UQ3wtJiYBDnAVRrzJd9FeFm0hSWTpAoGABE80\nQ9DWbKZE6qHR1LWDgfT2LlnJRjxGChm8/vzE6ibvpbPwrKlrpAcUICqTq5H1ZA5o\n5r1AyvlDHcJtqyoxXaZj5MsgTr/dGWvYT9Ib/y2L0vRSXS/sgNoNFYLTY5ULS73R\nzVbADjLJNKXE/51TAiOjIP9T/scH8jc/9wNqXXkCgYAqLQa45nHqDYhK3JS3hxoH\nUEgFtwnokexgKmGj2+VoWVZd8294XDOYoSilp6uk0+RahcS60Xb9eUm7tq6GcOUQ\njTy8mN9QNErE3wq1TwzzVzwnQLQMkObthFagB2oKUYvdIsOLcwUOCLrid9vfZpQa\nklWJ+DP//+O18g9WRbasNQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "englishguruchatbot-englishguru@englishguru-xfad.iam.gserviceaccount.com",
+  "client_id": "108340816754666862946",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/englishguruchatbot-englishguru%40englishguru-xfad.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
