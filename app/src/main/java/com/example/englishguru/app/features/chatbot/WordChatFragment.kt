@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ai.api.android.AIDataService
 import ai.api.model.AIRequest
 import ai.api.model.AIResponse
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -59,7 +61,6 @@ class WordChatFragment : Fragment() {
     }
 
     private fun sendMessage(message: Message) {
-        Log.d("MESSAGEMY", message.text)
         messages.add(message)
         adapter.notifyDataSetChanged()
     }
@@ -82,30 +83,20 @@ class WordChatFragment : Fragment() {
 //            }
 //        }
 
-         var response: AIResponse? = null
+        var response: AIResponse? = null
 
-        CoroutineScope(Dispatchers.IO).launch {
+        Thread {
             try {
                 response = aiDataService.request(request)
+                val botMessage = response.result.fulfillment.speech
 
-                // Log entire response
-                Log.d("AIResponse", "Full Response: $response")
-
-                // Check for null values before accessing specific fields
-                response?.result?.let { result ->
-                    val botMessage = result.fulfillment?.speech
-                    Log.d("AIResponse", "Bot Message: $botMessage")
-
-                    // Rest of your processing...
-                }
-
-                withContext(Dispatchers.Main) {
-                    // Update UI or perform other tasks on the main thread
+                Handler(Looper.getMainLooper()).post {
+                    sendMessage(Message(botMessage, false))
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-        }
+        }.start()
 
         Log.d("SDJHSHJDHJSDsd", response?.result.toString())
 
