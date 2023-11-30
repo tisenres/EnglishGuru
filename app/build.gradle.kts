@@ -10,16 +10,6 @@ android {
     namespace = "com.example.englishguru"
     compileSdk = 34
 
-//    packagingOptions {
-//        resources.excludes.add("META-INF/*")
-//    }
-
-//    packagingOptions {
-//        resources.excludes.add("META-INF/INDEX.LIST")
-//        resources.excludes.add("META-INF/DEPENDENCIES")
-//    }
-
-
     defaultConfig {
         applicationId = "com.example.englishguru"
         minSdk = 26
@@ -76,6 +66,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.3.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
@@ -107,6 +98,4 @@ dependencies {
 
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
-
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 }

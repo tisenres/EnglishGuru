@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.englishguru.app.features.translator.TranslatorFragment
-import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
 import com.example.englishguru.databinding.ActivityMainBinding
 
@@ -22,22 +20,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        initVocabularyFragment()
-//        initChatBotFragment()
-        initTranslatorFragment()
+        initMainScreenFragment()
     }
 
-    private fun initTranslatorFragment() {
+    private fun initMainScreenFragment() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<TranslatorFragment>(binding.fragmentContainer.id)
-        }
-    }
-
-    private fun initVocabularyFragment() {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<VocabularyFragment>(binding.fragmentContainer.id)
+            add<MainScreenFragment>(binding.fragmentContainer.id)
         }
     }
 

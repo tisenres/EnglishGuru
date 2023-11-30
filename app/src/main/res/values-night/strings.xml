@@ -19,6 +19,8 @@
     <string name="next_word">Next word</string>
     <string name="type_to_translate">Type to translate</string>
     <string name="translate">Translate</string>
+    <string name="vocabulary">Vocabulary</string>
+    <string name="translator">Translator</string>
 
     <string-array name="lang_array">
         <item>English</item>
