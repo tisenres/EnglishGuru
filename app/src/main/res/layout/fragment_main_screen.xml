@@ -11,11 +11,11 @@
         android:layout_marginTop="50dp"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/brain"
+        android:src="@drawable/braingwihoutbg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:contentDescription="@string/brainicon" />
 
     <TextView
         android:id="@+id/logoHeader"
@@ -23,8 +23,9 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:fontFamily="@font/product_sans_bold"
-        android:textSize="40sp"
-        android:layout_margin="10dp"
+        android:textSize="38sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +39,7 @@
         android:fontFamily="@font/product_sans_regular"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="5dp"
-        android:textSize="25sp"
+        android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoHeader" />
@@ -46,7 +47,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/vocabularyButton"
-        android:layout_width="260dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/vocabulary"
@@ -54,7 +55,7 @@
         android:layout_marginTop="70dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:fontFamily="@font/product_sans_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +63,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/translatorButton"
-        android:layout_width="260dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/translator"
@@ -70,7 +71,7 @@
         android:layout_marginTop="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:fontFamily="@font/product_sans_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
