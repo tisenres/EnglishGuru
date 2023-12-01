@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:fontFamily="@font/product_sans_regular"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="40sp"
         />
 

@@ -2405,8 +2405,6 @@ servant
 set
 set
 setting
-sex
-sexual
 shake
 share
 sharp

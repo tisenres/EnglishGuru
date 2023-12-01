@@ -35,6 +35,13 @@ class SectionsAdapter(private val presenter: IVocabularyPresenter): RecyclerView
                     presenter.onButtonPressed(pos)
                 }
             }
+
+            binding.card.setOnClickListener {
+                val pos = adapterPosition
+                if (pos != RecyclerView.NO_POSITION) {
+                    presenter.onButtonPressed(pos)
+                }
+            }
         }
 
         fun bind(position: Int) {

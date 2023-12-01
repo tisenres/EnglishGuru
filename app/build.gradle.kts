@@ -1,3 +1,4 @@
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -18,6 +19,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+//        val properties = Properties().apply {
+//            load(project.rootProject.file("local.properties").inputStream())
+//        }
+//
+//        buildConfigField("String", "RAPID_API_KEY", "\"${properties.getProperty("RAPID_API_KEY")}\"")
+
+        val properties = Properties().apply {
+            project.rootProject.file("local.properties").inputStream().use {
+                load(it)
+            }
+        }
+        buildConfigField("String", "RAPID_API_KEY", "\"${properties.getProperty("RAPID_API_KEY")}\"")
     }
 
     buildTypes {
@@ -41,11 +55,13 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
 
+    implementation("com.google.android.gms:play-services-dtdi:16.0.0-beta01")
     val lifecycleVersion = "2.6.2"
     val koinAndroidVersion = "3.1.2"
 
@@ -66,6 +82,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.3.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
@@ -97,6 +114,4 @@ dependencies {
 
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
-
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 }

@@ -9,7 +9,7 @@ sealed class Section(
 ) {
     data class A1(
         override var name: String = "Beginner",
-        override var description: String = "Most frequent words used in every conversation",
+        override var description: String = "Basic words for concrete needs",
         override var numberOfWords: Int = 897,
         override var startWordPos: Int = 0,
         override var endWordPos: Int = 897
@@ -17,7 +17,7 @@ sealed class Section(
 
     data class A2(
         override var name: String = "Elementary",
-        override var description: String = "Best suits for everyday talks and tourism",
+        override var description: String = "Words used in simple sentences and communicates in routine tasks",
         override var numberOfWords: Int = 871,
         override var startWordPos: Int = 898,
         override var endWordPos: Int = 1768
@@ -25,7 +25,7 @@ sealed class Section(
 
     data class B1(
         override var name: String = "Intermediate",
-        override var description: String = "Independent user who can understand the main points of clear texts on familiar topics in standard language",
+        override var description: String = "Vocabulary for independent user who can understand the main points of clear texts on familiar topics in standard language",
         override var numberOfWords: Int = 809,
         override var startWordPos: Int = 1769,
         override var endWordPos: Int = 2577
@@ -33,7 +33,7 @@ sealed class Section(
 
     data class B2(
         override var name: String = "Upper-Intermediate",
-        override var description: String = "Description for B2",
+        override var description: String = "Words are used in complex texts and can be interacted with fluency on various subjects",
         override var numberOfWords: Int = 727,
         override var startWordPos: Int = 2578,
         override var endWordPos: Int = 3304

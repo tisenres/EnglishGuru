@@ -6,13 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card1"
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
         >
 
         <LinearLayout
@@ -28,7 +29,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:scaleType="centerCrop"
-                android:contentDescription="YTstdtrsd"
                 />
 
             <TextView
@@ -40,6 +40,7 @@
                 android:fontFamily="@font/product_sans_bold"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
                 android:textSize="23sp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:text="Section name" />
 
                 <TextView
