@@ -22,17 +22,22 @@ class MainScreenFragment : Fragment() {
         return binding.root
     }
 
-    private fun initTranslatorFragment() {
-//        parentFragmentManager.commit {
-//            setReorderingAllowed(true)
-//            add<TranslatorFragment>(binding.fragmentContainer.id)
-//        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setOnClickListeners()
     }
 
-    private fun initVocabularyFragment() {
-//        parentFragmentManager.commit {
-//            setReorderingAllowed(true)
-//            add<VocabularyFragment>(binding.fragmentContainer.id)
-//        }
+    private fun setOnClickListeners() {
+        binding.apply {
+            vocabularyButton.setOnClickListener {
+                val mainActivity = activity as? MainActivity
+                mainActivity?.navigateToVocabularyFragment()
+            }
+
+            translatorButton.setOnClickListener {
+                val mainActivity = activity as? MainActivity
+                mainActivity?.navigateToTranslatorFragment()
+            }
+        }
     }
 }

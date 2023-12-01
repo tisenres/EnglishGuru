@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.example.englishguru.app.features.translator.TranslatorFragment
+import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
 import com.example.englishguru.databinding.ActivityMainBinding
 
@@ -39,6 +41,22 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             replace<WordFragment>(containerViewId = binding.fragmentContainer.id, args = bundle)
+            addToBackStack(null)
+        }
+    }
+
+    fun navigateToVocabularyFragment() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<VocabularyFragment>(containerViewId = binding.fragmentContainer.id)
+            addToBackStack(null)
+        }
+    }
+
+    fun navigateToTranslatorFragment() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<TranslatorFragment>(containerViewId = binding.fragmentContainer.id)
             addToBackStack(null)
         }
     }
