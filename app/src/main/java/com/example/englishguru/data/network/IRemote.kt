@@ -8,5 +8,5 @@ interface IRemote {
     fun fetchTranslationData(text: String,
                              sourceLang: String,
                              targetLang: String
-    ): Single<TransResponse>
+    ): Single<TranslationResponse>
 }

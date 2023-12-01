@@ -18,7 +18,7 @@ class TranslatorModel(private val port: TransModelOutputPort) : ITranslatorModel
 
         transFetchDisposable = remote.fetchTranslationData(text, sourceLang, targetLang)
             .subscribe({ response ->
-                port.onFetchComplete(response.data.translations[0].translatedText)
+                port.onFetchComplete(response.translations.first().translated.first())
             }, { error ->
                 error.printStackTrace()
             })

@@ -61,14 +61,4 @@ class WordModel(private val port: OutputPortModel, private val startWordPos: Int
     override fun onDestroyView() {
         wordFetchDisposable?.dispose()
     }
-
-//    override fun saveWordToShowLately() {
-//        val daysOfYearStr = LocalDateTime.now().dayOfYear.toString()
-//        sharedPrefsRepo.saveCurrentDateByWord(daysOfYearStr)
-//    }
-
-    override fun increaseDaysForWord(increaseNum: Int) {
-//        currentWord.dateToShow += increaseNum
-//        currentWord.wasShown = true
-    }
 }
