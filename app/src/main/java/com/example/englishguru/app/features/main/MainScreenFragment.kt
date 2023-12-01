@@ -23,16 +23,16 @@ class MainScreenFragment : Fragment() {
     }
 
     private fun initTranslatorFragment() {
-        parentFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<TranslatorFragment>(binding.fragmentContainer.id)
-        }
+//        parentFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            add<TranslatorFragment>(binding.fragmentContainer.id)
+//        }
     }
 
     private fun initVocabularyFragment() {
-        parentFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<VocabularyFragment>(binding.fragmentContainer.id)
-        }
+//        parentFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            add<VocabularyFragment>(binding.fragmentContainer.id)
+//        }
     }
 }
