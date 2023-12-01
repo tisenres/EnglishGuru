@@ -1,5 +1,6 @@
 package com.example.englishguru.data.network
 
+import com.example.englishguru.BuildConfig
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -18,6 +19,7 @@ class Remote: IRemote {
 
     private val wordsAPI: WordsAPI
     private val translateAPI: TranslatorAPI
+    private val rapidApiKey: String = BuildConfig.RAPID_API_KEY
 
     init {
         val loggingInterceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
@@ -47,7 +49,7 @@ class Remote: IRemote {
     }
 
     override fun fetchWordDataRemotely(query: String): Single<WordResponse> {
-        return wordsAPI.loadWordInfo(query)
+        return wordsAPI.loadWordInfo(rapidApiKey, query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
@@ -55,7 +57,7 @@ class Remote: IRemote {
     override fun fetchTranslationData(
         text: String,
         sourceLang: String,
-        targetLang: String
+        targetLang: String,
     ): Single<TranslationResponse> {
 
         val mediaType = "application/json".toMediaTypeOrNull()
@@ -65,9 +67,9 @@ class Remote: IRemote {
             "to": ["$targetLang"],
             "from": "$sourceLang"
         }
-    """.trimIndent().toRequestBody(mediaType)
+        """.trimIndent().toRequestBody(mediaType)
 
-        return translateAPI.fetchTranslationData(requestBody)
+        return translateAPI.fetchTranslationData(rapidApiKey, requestBody)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

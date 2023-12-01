@@ -1,3 +1,4 @@
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -18,6 +19,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+//        val properties = Properties().apply {
+//            load(project.rootProject.file("local.properties").inputStream())
+//        }
+//
+//        buildConfigField("String", "RAPID_API_KEY", "\"${properties.getProperty("RAPID_API_KEY")}\"")
+
+        val properties = Properties().apply {
+            project.rootProject.file("local.properties").inputStream().use {
+                load(it)
+            }
+        }
+        buildConfigField("String", "RAPID_API_KEY", "\"${properties.getProperty("RAPID_API_KEY")}\"")
     }
 
     buildTypes {
@@ -41,11 +55,13 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
 
+    implementation("com.google.android.gms:play-services-dtdi:16.0.0-beta01")
     val lifecycleVersion = "2.6.2"
     val koinAndroidVersion = "3.1.2"
 
