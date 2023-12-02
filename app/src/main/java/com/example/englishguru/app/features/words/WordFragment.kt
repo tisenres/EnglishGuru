@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.englishguru.R
 import com.example.englishguru.data.models.Word
 import com.example.englishguru.databinding.FragmentWordBinding
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 private const val START_WORD_POS = "START_WORD_POS"
 private const val END_WORD_POS = "END_WORD_POS"
@@ -26,8 +29,8 @@ class WordFragment: Fragment(), IWordView {
             startWordPos = it.getInt(START_WORD_POS)
             endWordPos = it.getInt(END_WORD_POS)
         }
-
-        presenter = WordPresenter(this, startWordPos ?: 0, endWordPos?: 0)
+        val presenter: IWordPresenter by inject { parametersOf(this, startWordPos, endWordPos) }
+        this.presenter = presenter
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -43,7 +46,7 @@ class WordFragment: Fragment(), IWordView {
 
     override fun showWordTitle(wordStr: String) {
         binding.wordTitle.text = wordStr
-        binding.showAnswerBtn.text = "Show answer"
+        binding.showAnswerBtn.text = getString(R.string.show_answer)
         setupTitleVisibility()
     }
 
