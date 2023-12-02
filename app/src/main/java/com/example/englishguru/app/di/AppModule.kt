@@ -7,6 +7,11 @@ import com.example.englishguru.app.features.translator.ITranslatorView
 import com.example.englishguru.app.features.translator.TransModelOutputPort
 import com.example.englishguru.app.features.translator.TranslatorModel
 import com.example.englishguru.app.features.translator.TranslatorPresenter
+import com.example.englishguru.app.features.vocabularySections.IVocabularyModel
+import com.example.englishguru.app.features.vocabularySections.IVocabularyPresenter
+import com.example.englishguru.app.features.vocabularySections.IVocabularyView
+import com.example.englishguru.app.features.vocabularySections.VocabularyModel
+import com.example.englishguru.app.features.vocabularySections.VocabularyPresenter
 import com.example.englishguru.app.features.words.IWordModel
 import com.example.englishguru.app.features.words.IWordPresenter
 import com.example.englishguru.app.features.words.IWordView
@@ -50,5 +55,13 @@ val appModule = module {
 
     factory <IWordModel> { (presenter: WordModelOutputPort, startWordPos: Int, endWordPos: Int) ->
         WordModel(presenter, startWordPos, endWordPos)
+    }
+
+    factory<IVocabularyPresenter> { (view: IVocabularyView) ->
+        VocabularyPresenter(view)
+    }
+
+    factory<IVocabularyModel> {
+        VocabularyModel()
     }
 }

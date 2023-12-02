@@ -8,16 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.englishguru.app.features.main.MainActivity
 import com.example.englishguru.databinding.FragmentVocabularyBinding
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class VocabularyFragment: Fragment(), IVocabularyView {
 
     private lateinit var binding: FragmentVocabularyBinding
     private lateinit var adapter: SectionsAdapter
-    private lateinit var presenter: IVocabularyPresenter
+    private val presenter: IVocabularyPresenter by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = VocabularyPresenter(this)
         adapter = SectionsAdapter(presenter)
     }
 

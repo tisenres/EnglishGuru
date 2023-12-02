@@ -1,8 +1,12 @@
 package com.example.englishguru.app.features.vocabularySections
 
-class VocabularyPresenter(private val fragment: IVocabularyView): IVocabularyPresenter {
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.core.parameter.parametersOf
 
-    private val model: IVocabularyModel = VocabularyModel()
+class VocabularyPresenter(private val fragment: IVocabularyView): IVocabularyPresenter, KoinComponent {
+
+    private val model: IVocabularyModel by inject { parametersOf(this) }
 
     override fun onButtonPressed(pos: Int) {
         fragment.navigateToWordFragment(
