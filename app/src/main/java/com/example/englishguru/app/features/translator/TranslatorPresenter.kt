@@ -1,8 +1,13 @@
 package com.example.englishguru.app.features.translator
 
-class TranslatorPresenter(private val fragment: ITranslatorView) : ITranslatorPresenter, TransModelOutputPort {
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.core.parameter.parametersOf
 
-    private val model: ITranslatorModel = TranslatorModel(this)
+class TranslatorPresenter(private val fragment: ITranslatorView) : ITranslatorPresenter, TransModelOutputPort,
+    KoinComponent {
+
+    private val model: ITranslatorModel by inject { parametersOf(this) }
 
     override fun onFetchComplete(response: String) {
         fragment.initTargetTextField(response)

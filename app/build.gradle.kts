@@ -20,12 +20,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-//        val properties = Properties().apply {
-//            load(project.rootProject.file("local.properties").inputStream())
-//        }
-//
-//        buildConfigField("String", "RAPID_API_KEY", "\"${properties.getProperty("RAPID_API_KEY")}\"")
-
         val properties = Properties().apply {
             project.rootProject.file("local.properties").inputStream().use {
                 load(it)
@@ -111,6 +105,7 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0")
+
 
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")

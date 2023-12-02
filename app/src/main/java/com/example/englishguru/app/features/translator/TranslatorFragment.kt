@@ -10,11 +10,13 @@ import android.widget.ArrayAdapter
 import com.example.englishguru.R
 import com.example.englishguru.app.features.translator.models.LanguageModel
 import com.example.englishguru.databinding.FragmentTranslatorBinding
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
-class TranslatorFragment : Fragment(), ITranslatorView, AdapterView.OnItemSelectedListener {
+class TranslatorFragment: Fragment(), ITranslatorView, AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: FragmentTranslatorBinding
-    private lateinit var presenter: ITranslatorPresenter
+    private val presenter: ITranslatorPresenter by inject { parametersOf(this) }
 
     private var sourceLangCode: String = LanguageModel.getLanguageCodeByName("English")
     private var targetLangCode: String = LanguageModel.getLanguageCodeByName("English")
@@ -23,7 +25,6 @@ class TranslatorFragment : Fragment(), ITranslatorView, AdapterView.OnItemSelect
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        presenter = TranslatorPresenter(this)
         binding = FragmentTranslatorBinding.inflate(layoutInflater)
         return binding.root
     }
