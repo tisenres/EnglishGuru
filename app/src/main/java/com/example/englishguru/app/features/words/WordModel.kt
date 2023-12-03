@@ -6,8 +6,6 @@ import com.example.englishguru.data.repository.IRepository
 import io.reactivex.disposables.Disposable
 import org.koin.java.KoinJavaComponent.getKoin
 
-//const val TOTAL_NUMBER_OF_WORDS = 4617
-
 class WordModel(private val port: WordModelOutputPort, private val startWordPos: Int, private val endWorPos: Int): IWordModel {
 
     private val sharedPrefsRepo: IRepository = getKoin().get()
