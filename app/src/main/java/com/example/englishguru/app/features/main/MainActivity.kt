@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.example.englishguru.app.features.chatbot.ChatBotFragment
 import com.example.englishguru.app.features.translator.TranslatorFragment
 import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
@@ -57,6 +58,14 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             replace<TranslatorFragment>(containerViewId = binding.fragmentContainer.id)
+            addToBackStack(null)
+        }
+    }
+
+    fun navigateToChatBotFragment() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<ChatBotFragment>(containerViewId = binding.fragmentContainer.id)
             addToBackStack(null)
         }
     }

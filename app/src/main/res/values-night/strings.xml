@@ -22,7 +22,8 @@
     <string name="vocabulary">Vocabulary</string>
     <string name="translator">Translator</string>
     <string name="logo_description">Improve your vocabulary</string>
-    <string name="brainicon">Brain icon</string>
+    <string name="brain_icon">Brain icon</string>
+    <string name="chat_bot">Chat Bot</string>
 
     <string-array name="lang_array">
         <item>English</item>
