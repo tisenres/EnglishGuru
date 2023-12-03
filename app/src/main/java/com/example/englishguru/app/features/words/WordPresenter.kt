@@ -7,7 +7,6 @@ import org.koin.core.parameter.parametersOf
 
 class WordPresenter(private val fragment: IWordView, startWordPos: Int, endWorPos: Int): IWordPresenter, WordModelOutputPort, KoinComponent {
 
-//    private val model: IWordModel = WordModel(this, startWordPos, endWorPos)
     private val model: IWordModel by inject { parametersOf(this, startWordPos, endWorPos) }
 
     override fun onViewCreated() {
