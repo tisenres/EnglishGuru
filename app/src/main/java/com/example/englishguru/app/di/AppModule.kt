@@ -53,7 +53,7 @@ val appModule = module {
         get<WordPresenter> { parametersOf(view, startWordPos, endWordPos) }
     }
 
-    factory <IWordModel> { (presenter: WordModelOutputPort, startWordPos: Int, endWordPos: Int) ->
+    factory<IWordModel> { (presenter: WordModelOutputPort, startWordPos: Int, endWordPos: Int) ->
         WordModel(presenter, startWordPos, endWordPos)
     }
 

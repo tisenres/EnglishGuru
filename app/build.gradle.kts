@@ -54,8 +54,6 @@ android {
 }
 
 dependencies {
-
-    implementation("com.google.android.gms:play-services-dtdi:16.0.0-beta01")
     val lifecycleVersion = "2.6.2"
     val koinAndroidVersion = "3.1.2"
 
@@ -105,7 +103,6 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0")
-
 
     // CardView
     implementation("androidx.cardview:cardview:1.0.0")
