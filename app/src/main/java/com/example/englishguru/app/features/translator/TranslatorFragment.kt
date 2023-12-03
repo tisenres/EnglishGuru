@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.example.englishguru.R
 import com.example.englishguru.app.features.translator.models.LanguageModel
 import com.example.englishguru.databinding.FragmentTranslatorBinding
@@ -68,7 +69,11 @@ class TranslatorFragment: Fragment(), ITranslatorView, AdapterView.OnItemSelecte
     private fun setOnClickListeners() {
         binding.translateBtn.setOnClickListener {
             val textToTranslate = binding.sourceText.text.toString()
-            presenter.onTranslateButtonPressed(textToTranslate, sourceLangCodeSelection, targetLangCodeSelection)
+             if (textToTranslate.isNotBlank()) {
+                 presenter.onTranslateButtonPressed(textToTranslate, sourceLangCodeSelection, targetLangCodeSelection)
+             } else {
+                 Toast.makeText(requireContext(), "Type something to translate", Toast.LENGTH_SHORT).show()
+             }
         }
 
         binding.swapLangBtn.setOnClickListener {
