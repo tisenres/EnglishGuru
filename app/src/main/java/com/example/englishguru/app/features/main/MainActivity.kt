@@ -2,6 +2,7 @@ package com.example.englishguru.app.features.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private fun initMainScreenFragment() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
+            supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             add<MainScreenFragment>(binding.fragmentContainer.id)
         }
     }
