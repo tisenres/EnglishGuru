@@ -30,9 +30,10 @@
             android:id="@+id/swapLangBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_right_alt_24"
+            android:src="@drawable/baseline_compare_arrows_24"
             android:clickable="true"
             android:focusable="true"
+            android:contentDescription="@string/swap_languages_pic"
             />
 
         <Spinner
@@ -82,6 +83,7 @@
             android:gravity="top|start"
             android:hint="@string/type_to_translate"
             android:textColorHint="@color/colorGray"
+            android:inputType="text"
             android:textSize="16sp" />
 
         <Button

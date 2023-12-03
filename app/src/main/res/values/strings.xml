@@ -8,7 +8,7 @@
     <string name="hard">Hard</string>
     <string name="good">Good</string>
     <string name="easy">Easy</string>
-    <string name="words">Words</string>
+    <string name="words">Word</string>
     <string name="definition">Definition</string>
     <string name="examples">Examples</string>
     <string name="synonyms">Synonyms</string>
@@ -22,6 +22,7 @@
     <string name="translator">Translator</string>
     <string name="logo_description">Improve your vocabulary</string>
     <string name="brainicon">Brain icon</string>
+    <string name="swap_languages_pic">swap_languages_pic</string>
 
     <string-array name="lang_array">
         <item>English</item>
