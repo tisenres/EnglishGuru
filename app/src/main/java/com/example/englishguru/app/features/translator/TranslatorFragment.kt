@@ -18,8 +18,10 @@ class TranslatorFragment: Fragment(), ITranslatorView, AdapterView.OnItemSelecte
     private lateinit var binding: FragmentTranslatorBinding
     private val presenter: ITranslatorPresenter by inject { parametersOf(this) }
 
-    private var sourceLangCode: String = LanguageModel.getLanguageCodeByName("English")
-    private var targetLangCode: String = LanguageModel.getLanguageCodeByName("English")
+    private var sourceLangCodeSelection: String = LanguageModel.getLanguageCodeByName("English")
+    private var targetLangCodeSelection: String = LanguageModel.getLanguageCodeByName("English")
+    private lateinit var spinnerAdapter: ArrayAdapter<CharSequence>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,15 +34,20 @@ class TranslatorFragment: Fragment(), ITranslatorView, AdapterView.OnItemSelecte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setOnClickListeners()
+        initSpinnerAdapter()
         initSpinners()
     }
 
-    private fun initSpinners() {
-        ArrayAdapter.createFromResource(
+    private fun initSpinnerAdapter() {
+        spinnerAdapter = ArrayAdapter.createFromResource(
             requireContext(),
             R.array.lang_array,
             android.R.layout.simple_spinner_item
-        ).also { adapter ->
+        )
+    }
+
+    private fun initSpinners() {
+        spinnerAdapter.also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.sourceSpinner.adapter = adapter
         }
@@ -61,7 +68,15 @@ class TranslatorFragment: Fragment(), ITranslatorView, AdapterView.OnItemSelecte
     private fun setOnClickListeners() {
         binding.translateBtn.setOnClickListener {
             val textToTranslate = binding.sourceText.text.toString()
-            presenter.onTranslateButtonPressed(textToTranslate, sourceLangCode, targetLangCode)
+            presenter.onTranslateButtonPressed(textToTranslate, sourceLangCodeSelection, targetLangCodeSelection)
+        }
+
+        binding.swapLangBtn.setOnClickListener {
+            val sourcePos = spinnerAdapter.getPosition(LanguageModel.getLanguageNameByCode(sourceLangCodeSelection))
+            val targetPos = spinnerAdapter.getPosition(LanguageModel.getLanguageNameByCode(targetLangCodeSelection))
+
+            binding.sourceSpinner.setSelection(targetPos)
+            binding.targetSpinner.setSelection(sourcePos)
         }
     }
 
@@ -73,12 +88,12 @@ class TranslatorFragment: Fragment(), ITranslatorView, AdapterView.OnItemSelecte
         when (parent?.id) {
             R.id.sourceSpinner -> {
                 val selectedSourceLanguage = parent.getItemAtPosition(position) as String
-                sourceLangCode = LanguageModel.getLanguageCodeByName(selectedSourceLanguage)
+                sourceLangCodeSelection = LanguageModel.getLanguageCodeByName(selectedSourceLanguage)
                 binding.sourceHeader.text = selectedSourceLanguage
             }
             R.id.targetSpinner -> {
                 val selectedTargetLanguage = parent.getItemAtPosition(position) as String
-                targetLangCode = LanguageModel.getLanguageCodeByName(selectedTargetLanguage)
+                targetLangCodeSelection = LanguageModel.getLanguageCodeByName(selectedTargetLanguage)
                 binding.targetHeader.text = selectedTargetLanguage
             }
         }
