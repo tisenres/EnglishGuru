@@ -5,10 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
-import com.example.englishguru.app.features.translator.TranslatorFragment
-import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.databinding.FragmentMainScreenBinding
 
 class MainScreenFragment : Fragment() {
@@ -37,6 +33,11 @@ class MainScreenFragment : Fragment() {
             translatorButton.setOnClickListener {
                 val mainActivity = activity as? MainActivity
                 mainActivity?.navigateToTranslatorFragment()
+            }
+
+            chatBotBtn.setOnClickListener {
+                val mainActivity = activity as? MainActivity
+                mainActivity?.navigateToChatBotFragment()
             }
         }
     }

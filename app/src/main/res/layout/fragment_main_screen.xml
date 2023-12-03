@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/brainicon" />
+        android:contentDescription="@string/brain_icon" />
 
     <TextView
         android:id="@+id/logoHeader"
@@ -76,6 +76,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vocabularyButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/chatBotBtn"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/chat_bot"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/product_sans_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/translatorButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
