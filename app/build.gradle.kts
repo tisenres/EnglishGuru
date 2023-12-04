@@ -7,6 +7,12 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
 }
 
+val properties = Properties().apply {
+    project.rootProject.file("local.properties").inputStream().use {
+        load(it)
+    }
+}
+
 android {
     namespace = "com.example.englishguru"
     compileSdk = 34
@@ -20,17 +26,24 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val properties = Properties().apply {
-            project.rootProject.file("local.properties").inputStream().use {
-                load(it)
-            }
-        }
         buildConfigField("String", "RAPID_API_KEY", "\"${properties.getProperty("RAPID_API_KEY")}\"")
+    }
+
+    signingConfigs {
+
+        create("release") {
+            storeFile = file("/Users/tisenres/StudioProjects/EnglishGuru/englishgurukey.keystore")
+            storePassword = properties.getProperty("SIGN_APP_KEY")
+            keyAlias = "englishguru-key-alias"
+            keyPassword = properties.getProperty("SIGN_APP_KEY")
+        }
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs["release"]
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
 

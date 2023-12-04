@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.example.englishguru.R
 import com.example.englishguru.app.features.chatbot.ChatBotFragment
 import com.example.englishguru.app.features.translator.TranslatorFragment
 import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMainScreenFragment() {
         supportFragmentManager.commit {
+            setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
             setReorderingAllowed(true)
             supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             add<MainScreenFragment>(binding.fragmentContainer.id)
@@ -36,7 +38,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToWordFragment(startWordPos: Int, endWordPos: Int) {
-
         val bundle = Bundle()
         bundle.putInt(START_WORD_POS, startWordPos)
         bundle.putInt(END_WORD_POS, endWordPos)
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     fun navigateToVocabularyFragment() {
         supportFragmentManager.commit {
+            setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
             setReorderingAllowed(true)
             replace<VocabularyFragment>(containerViewId = binding.fragmentContainer.id)
             addToBackStack(null)
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     fun navigateToTranslatorFragment() {
         supportFragmentManager.commit {
+            setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
             setReorderingAllowed(true)
             replace<TranslatorFragment>(containerViewId = binding.fragmentContainer.id)
             addToBackStack(null)
@@ -66,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     fun navigateToChatBotFragment() {
         supportFragmentManager.commit {
+            setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
             setReorderingAllowed(true)
             replace<ChatBotFragment>(containerViewId = binding.fragmentContainer.id)
             addToBackStack(null)
