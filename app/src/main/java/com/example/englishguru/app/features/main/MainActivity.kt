@@ -2,12 +2,15 @@ package com.example.englishguru.app.features.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.englishguru.R
-import com.example.englishguru.app.features.chatbot.ChatBotFragment
+import com.example.englishguru.app.features.chat.ChatRoute
+import com.example.englishguru.app.features.chat.GenerativeViewModelFactory
 import com.example.englishguru.app.features.translator.TranslatorFragment
 import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
@@ -32,7 +35,10 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
             setReorderingAllowed(true)
-            supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            supportFragmentManager.popBackStackImmediate(
+                null,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
             add<MainScreenFragment>(binding.fragmentContainer.id)
         }
     }
@@ -68,11 +74,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToChatBotFragment() {
-        supportFragmentManager.commit {
-            setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
-            setReorderingAllowed(true)
-            replace<ChatBotFragment>(containerViewId = binding.fragmentContainer.id)
-            addToBackStack(null)
+//        supportFragmentManager.commit {
+//            setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
+//            setReorderingAllowed(true)
+//            replace<ChatBotFragment>(containerViewId = binding.fragmentContainer.id)
+//            addToBackStack(null)
+//        }
+        setContent {
+            ChatRoute(chatViewModel = viewModel(factory = GenerativeViewModelFactory))
         }
+//        val rootView = findViewById<ChatScreen>(R.lay.screen_ch)
+//        rootView.setContent {
+//
+//        }
     }
+
 }
