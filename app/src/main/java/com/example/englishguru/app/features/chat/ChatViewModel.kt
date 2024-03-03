@@ -3,8 +3,6 @@ package com.example.englishguru.app.features.chat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.ai.client.generativeai.GenerativeModel
-import com.google.ai.client.generativeai.type.asTextOrNull
-import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,21 +12,24 @@ class ChatViewModel(
     generativeModel: GenerativeModel
 ) : ViewModel() {
     private val chat = generativeModel.startChat(
-        history = listOf(
-            content(role = "user") { text("Hello, I have 2 dogs in my house.") },
-            content(role = "model") { text("Great to meet you. What would you like to know?") }
-        )
+//        history = listOf(
+//            content(role = "user") { text("Hello, I have 2 dogs in my house.") },
+//            content(role = "model") { text("Great to meet you. What would you like to know?") }
+//        )
     )
 
-    private val _uiState: MutableStateFlow<ChatUiState> =
-        MutableStateFlow(ChatUiState(chat.history.map { content ->
-            // Map the initial messages
-            ChatMessage(
-                text = content.parts.first().asTextOrNull() ?: "",
-                participant = if (content.role == "user") Participant.USER else Participant.MODEL,
-                isPending = false
-            )
-        }))
+    private val _uiState: MutableStateFlow<ChatUiState> = MutableStateFlow<ChatUiState>(
+        ChatUiState(
+            emptyList()
+        )
+    )
+//        MutableStateFlow(ChatUiState(chat.history.map { content ->
+//            ChatMessage(
+//                text = content.parts.first().asTextOrNull() ?: "",
+//                participant = if (content.role == "user") Participant.USER else Participant.MODEL,
+//                isPending = false
+//            )
+//        }))
     val uiState: StateFlow<ChatUiState> =
         _uiState.asStateFlow()
 

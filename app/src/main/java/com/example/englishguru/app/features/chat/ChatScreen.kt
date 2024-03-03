@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -157,8 +158,7 @@ fun MessageInput(
     var userMessage by rememberSaveable { mutableStateOf("") }
 
     ElevatedCard(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = Modifier.fillMaxWidth()
     ) {
         Row(
             modifier = Modifier
@@ -169,9 +169,7 @@ fun MessageInput(
                 value = userMessage,
                 label = { Text(stringResource(R.string.chat_label)) },
                 onValueChange = { userMessage = it },
-                keyboardOptions = KeyboardOptions(
-                    capitalization = KeyboardCapitalization.Sentences,
-                ),
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
                     .fillMaxWidth()
@@ -186,15 +184,27 @@ fun MessageInput(
                     }
                 },
                 modifier = Modifier
-                    .padding(start = 16.dp)
+                    .padding(start = 8.dp)
                     .align(Alignment.CenterVertically)
-                    .fillMaxWidth()
                     .weight(0.15f)
             ) {
                 Icon(
                     Icons.Default.Send,
-                    contentDescription = stringResource(R.string.action_send),
-                    modifier = Modifier
+                    contentDescription = stringResource(R.string.action_send)
+                )
+            }
+            IconButton(
+                onClick = {
+
+                },
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .align(Alignment.CenterVertically)
+                    .weight(0.15f)
+            ) {
+                Icon(
+                    Icons.Default.Mic,
+                    contentDescription = stringResource(R.string.action_mic)
                 )
             }
         }

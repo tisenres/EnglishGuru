@@ -40,5 +40,6 @@
 
     <string name="chat_label">Message</string>
     <string name="action_send">Send</string>
+    <string name="action_mic">Microphone</string>
 
 </resources>

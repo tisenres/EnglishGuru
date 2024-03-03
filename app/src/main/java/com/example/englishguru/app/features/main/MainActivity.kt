@@ -74,19 +74,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToChatBotFragment() {
-//        supportFragmentManager.commit {
-//            setCustomAnimations(R.anim.fade_fast, android.R.anim.fade_out)
-//            setReorderingAllowed(true)
-//            replace<ChatBotFragment>(containerViewId = binding.fragmentContainer.id)
-//            addToBackStack(null)
-//        }
         setContent {
             ChatRoute(chatViewModel = viewModel(factory = GenerativeViewModelFactory))
         }
-//        val rootView = findViewById<ChatScreen>(R.lay.screen_ch)
-//        rootView.setContent {
-//
-//        }
     }
-
 }
