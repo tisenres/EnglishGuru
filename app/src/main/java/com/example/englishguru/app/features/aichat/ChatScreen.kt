@@ -14,8 +14,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Mic
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -55,6 +55,9 @@ internal fun ChatRoute(
             MessageInput(
                 onSendMessage = { inputText ->
                     chatViewModel.sendMessage(inputText)
+                },
+                onStartVoiceRecording = {
+
                 },
                 resetScroll = {
                     coroutineScope.launch {
@@ -152,6 +155,7 @@ fun ChatBubbleItem(
 @Composable
 fun MessageInput(
     onSendMessage: (String) -> Unit,
+    onStartVoiceRecording: () -> Unit,
     resetScroll: () -> Unit = {}
 ) {
     var userMessage by rememberSaveable { mutableStateOf("") }
@@ -188,13 +192,13 @@ fun MessageInput(
                     .weight(0.15f)
             ) {
                 Icon(
-                    Icons.Default.Send,
+                    Icons.AutoMirrored.Filled.Send,
                     contentDescription = stringResource(R.string.action_send)
                 )
             }
             IconButton(
                 onClick = {
-
+                      onStartVoiceRecording()
                 },
                 modifier = Modifier
                     .padding(start = 8.dp)
