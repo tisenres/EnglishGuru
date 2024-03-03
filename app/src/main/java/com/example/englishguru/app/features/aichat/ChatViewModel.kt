@@ -1,4 +1,4 @@
-package com.example.englishguru.app.features.chat
+package com.example.englishguru.app.features.aichat
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -35,7 +35,6 @@ class ChatViewModel(
 
 
     fun sendMessage(userMessage: String) {
-        // Add a pending message
         _uiState.value.addMessage(
             ChatMessage(
                 text = userMessage,

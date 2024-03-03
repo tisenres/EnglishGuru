@@ -1,4 +1,4 @@
-package com.example.englishguru.app.features.chat
+package com.example.englishguru.app.features.aichat
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -69,7 +69,6 @@ internal fun ChatRoute(
                 .padding(paddingValues)
                 .fillMaxSize()
         ) {
-            // Messages List
             ChatList(chatUiState.messages, listState)
         }
     }

@@ -1,4 +1,4 @@
-package com.example.englishguru.app.features.chat
+package com.example.englishguru.app.features.aichat
 
 import java.util.UUID
 

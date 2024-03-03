@@ -1,4 +1,4 @@
-package com.example.englishguru.app.features.chat
+package com.example.englishguru.app.features.aichat
 
 import android.app.Application
 import android.content.Intent

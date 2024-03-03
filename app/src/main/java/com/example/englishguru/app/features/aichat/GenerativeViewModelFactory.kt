@@ -1,9 +1,9 @@
-package com.example.englishguru.app.features.chat
+package com.example.englishguru.app.features.aichat
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.englishguru.BuildConfig
+import com.google.ai.client.generativeai.BuildConfig
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.generationConfig
 

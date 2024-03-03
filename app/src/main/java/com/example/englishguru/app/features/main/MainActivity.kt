@@ -9,8 +9,8 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.englishguru.R
-import com.example.englishguru.app.features.chat.ChatRoute
-import com.example.englishguru.app.features.chat.GenerativeViewModelFactory
+import com.example.englishguru.app.features.aichat.ChatRoute
+import com.example.englishguru.app.features.aichat.GenerativeViewModelFactory
 import com.example.englishguru.app.features.translator.TranslatorFragment
 import com.example.englishguru.app.features.vocabularySections.VocabularyFragment
 import com.example.englishguru.app.features.words.WordFragment
