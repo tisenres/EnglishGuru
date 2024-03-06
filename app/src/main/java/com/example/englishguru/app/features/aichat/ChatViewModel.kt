@@ -15,8 +15,8 @@ class ChatViewModel(
 ) : ViewModel() {
     private val chat = generativeModel.startChat(
         history = listOf(
-            content(role = "user") { text("Hello, I have 2 dogs in my house.") },
-            content(role = "model") { text("Great to meet you. What would you like to know?") }
+            content(role = "user") { text("Do you have any questions?") },
+            content(role = "model") { text("Hi, I'm Guru and I will assist you giving personal training and exercises to improve your English.\n\nDo you have any questions?") },
         )
     )
 
