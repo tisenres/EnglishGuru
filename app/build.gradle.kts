@@ -1,10 +1,11 @@
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("io.realm.kotlin")
-    id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 val properties = Properties().apply {
@@ -26,7 +27,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "RAPID_API_KEY", "\"${properties.getProperty("RAPID_API_KEY")}\"")
+        buildConfigField(
+            "String",
+            "RAPID_API_KEY",
+            "\"${properties.getProperty("RAPID_API_KEY")}\""
+        )
     }
 
     signingConfigs {
@@ -67,56 +72,44 @@ android {
 }
 
 dependencies {
-    val lifecycleVersion = "2.6.2"
-    val koinAndroidVersion = "3.1.2"
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation(libs.hilt)
+    kapt(libs.hiltCompiler)
+    kapt(libs.hiltCompilerAndroidX)
+    implementation(libs.hiltNavigationCompose)
 
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.3.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+    implementation(libs.locationServices)
 
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation(libs.retrofit)
+    implementation(libs.retrofitMoshi)
+    implementation(libs.okhttpLoggingInterceptor)
 
-    // Koin
-    implementation("io.insert-koin:koin-android:$koinAndroidVersion")
-    implementation("io.insert-koin:koin-core:$koinAndroidVersion")
-    implementation("io.insert-koin:koin-test:$koinAndroidVersion")
+    implementation(libs.lifecycleViewModelCompose)
 
-    // Material Design
-    implementation("com.google.android.material:material:1.10.0")
+    androidTestImplementation(libs.hiltAndroidTesting)
+    kaptAndroidTest(libs.hiltCompiler)
 
-    // RxJava
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.6")
+    testImplementation(libs.hiltAndroidTesting)
+    kaptTest(libs.hiltCompiler)
+}
 
-    // ViewPager
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-
-    // Realm
-    implementation("io.realm.kotlin:library-base:1.11.0")
-    implementation("io.realm.kotlin:library-sync:1.11.0")
-    kapt("io.realm:realm-annotations-processor:10.10.0")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0")
-
-    // CardView
-    implementation("androidx.cardview:cardview:1.0.0")
+kapt {
+    correctErrorTypes = true
+    generateStubs = true
 }
