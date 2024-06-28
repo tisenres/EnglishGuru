@@ -10,7 +10,6 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
-// Color schemes
 private val DarkColorScheme = darkColorScheme(
     primary = Black,
     secondary = White,

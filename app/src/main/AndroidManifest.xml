@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".app.App"
+        android:name=".app.EnglishGuruApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,10 +14,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
-        android:theme="@style/Base.Theme.EnglishGuru"
+        android:theme="@style/Base.Theme.EnglishGuru."
         tools:targetApi="31">
         <activity
-            android:name=".app.features.main.MainActivity"
+            android:name=".core.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

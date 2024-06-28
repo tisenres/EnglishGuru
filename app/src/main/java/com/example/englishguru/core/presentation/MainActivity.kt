@@ -8,7 +8,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.bron24.bron24_android.core.presentation.theme.EnglishGuruTheme
+import com.example.englishguru.core.presentation.theme.EnglishGuruTheme
+import com.example.englishguru.features.chatbot.presentation.ChatBotScreen
+import com.example.englishguru.features.translator.presentation.TranslatorScreen
+import com.example.englishguru.features.vocabulary.presentation.VocabularyScreen
+import com.example.englishguru.features.words.presentation.WordScreen
 
 class MainActivity : ComponentActivity() {
 
