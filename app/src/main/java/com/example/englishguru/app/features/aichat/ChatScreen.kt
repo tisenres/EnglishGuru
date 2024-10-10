@@ -196,20 +196,20 @@ fun MessageInput(
                     contentDescription = stringResource(R.string.action_send)
                 )
             }
-            IconButton(
-                onClick = {
-                      onStartVoiceRecording()
-                },
-                modifier = Modifier
-                    .padding(start = 8.dp)
-                    .align(Alignment.CenterVertically)
-                    .weight(0.15f)
-            ) {
-                Icon(
-                    Icons.Default.Mic,
-                    contentDescription = stringResource(R.string.action_mic)
-                )
-            }
+//            IconButton(
+//                onClick = {
+//                    onStartVoiceRecording()
+//                },
+//                modifier = Modifier
+//                    .padding(start = 8.dp)
+//                    .align(Alignment.CenterVertically)
+//                    .weight(0.15f)
+//            ) {
+//                Icon(
+//                    Icons.Default.Mic,
+//                    contentDescription = stringResource(R.string.action_mic)
+//                )
+//            }
         }
     }
 }
