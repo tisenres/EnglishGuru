@@ -1,12 +1,10 @@
 package com.example.englishguru.app.features.aichat
 
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -15,9 +13,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.filled.Mic
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -41,9 +36,19 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.englishguru.R
 import kotlinx.coroutines.launch
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 
 @Composable
-internal fun ChatRoute(
+fun ChatRoute(
     chatViewModel: ChatViewModel = viewModel(factory = GenerativeViewModelFactory)
 ) {
     val chatUiState by chatViewModel.uiState.collectAsState()
@@ -51,31 +56,49 @@ internal fun ChatRoute(
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
+//        topBar = {
+//            ChatTopBar()
+//        },
         bottomBar = {
             MessageInput(
                 onSendMessage = { inputText ->
                     chatViewModel.sendMessage(inputText)
                 },
-                onStartVoiceRecording = {
-
-                },
                 resetScroll = {
                     coroutineScope.launch {
-                        listState.scrollToItem(0)
+                        listState.animateScrollToItem(0)
                     }
                 }
             )
         }
     ) { paddingValues ->
-        Column(
+        Box(
             modifier = Modifier
-                .padding(paddingValues)
                 .fillMaxSize()
+                .padding(paddingValues)
+                .background(MaterialTheme.colorScheme.background)
         ) {
             ChatList(chatUiState.messages, listState)
         }
     }
 }
+
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun ChatTopBar() {
+//    TopAppBar(
+//        title = {
+//            Text(
+//                text = "AI Chat",
+//                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
+//            )
+//        },
+//        colors = TopAppBarDefaults.topAppBarColors(
+//            containerColor = MaterialTheme.colorScheme.primaryContainer,
+//            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+//        )
+//    )
+//}
 
 @Composable
 fun ChatList(
@@ -84,7 +107,9 @@ fun ChatList(
 ) {
     LazyColumn(
         reverseLayout = true,
-        state = listState
+        state = listState,
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(chatMessages.reversed()) { message ->
             ChatBubbleItem(message)
@@ -93,60 +118,123 @@ fun ChatList(
 }
 
 @Composable
-fun ChatBubbleItem(
-    chatMessage: ChatMessage
-) {
+fun ChatBubbleItem(chatMessage: ChatMessage) {
     val isModelMessage = chatMessage.participant == Participant.MODEL ||
             chatMessage.participant == Participant.ERROR
 
-    val backgroundColor = when (chatMessage.participant) {
-        Participant.MODEL -> MaterialTheme.colorScheme.primaryContainer
-        Participant.USER -> MaterialTheme.colorScheme.tertiaryContainer
+    val bubbleColor = when (chatMessage.participant) {
+        Participant.MODEL -> MaterialTheme.colorScheme.secondaryContainer
+        Participant.USER -> MaterialTheme.colorScheme.primaryContainer
         Participant.ERROR -> MaterialTheme.colorScheme.errorContainer
     }
 
-    val bubbleShape = if (isModelMessage) {
-        RoundedCornerShape(4.dp, 20.dp, 20.dp, 20.dp)
-    } else {
-        RoundedCornerShape(20.dp, 4.dp, 20.dp, 20.dp)
+    val textColor = when (chatMessage.participant) {
+        Participant.MODEL -> MaterialTheme.colorScheme.onSecondaryContainer
+        Participant.USER -> MaterialTheme.colorScheme.onPrimaryContainer
+        Participant.ERROR -> MaterialTheme.colorScheme.onErrorContainer
     }
 
-    val horizontalAlignment = if (isModelMessage) {
-        Alignment.Start
-    } else {
-        Alignment.End
-    }
+    val bubbleShape = RoundedCornerShape(16.dp)
+
+    val horizontalAlignment = if (isModelMessage) Alignment.Start else Alignment.End
 
     Column(
         horizontalAlignment = horizontalAlignment,
-        modifier = Modifier
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-            .fillMaxWidth()
+        modifier = Modifier.fillMaxWidth()
     ) {
-        Text(
-            text = chatMessage.participant.name,
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.padding(bottom = 4.dp)
-        )
-        Row {
+        if (isModelMessage) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_person_24),
+                    contentDescription = "AI Avatar",
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.secondary)
+                        .padding(4.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "AI Assistant",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+        }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
             if (chatMessage.isPending) {
                 CircularProgressIndicator(
                     modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .padding(all = 8.dp)
+                        .padding(end = 8.dp)
+                        .size(16.dp),
+                    strokeWidth = 2.dp
                 )
             }
-            BoxWithConstraints {
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = backgroundColor),
-                    shape = bubbleShape,
-                    modifier = Modifier.widthIn(0.dp, maxWidth * 0.9f)
-                ) {
-                    Text(
-                        text = chatMessage.text,
-                        modifier = Modifier.padding(16.dp)
-                    )
-                }
+            Surface(
+                shape = bubbleShape,
+                color = bubbleColor,
+                tonalElevation = 2.dp
+            ) {
+                Text(
+                    text = chatMessage.text,
+                    color = textColor,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(12.dp)
+                )
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MessageInput(
+    onSendMessage: (String) -> Unit,
+    resetScroll: () -> Unit
+) {
+    var userMessage by remember { mutableStateOf("") }
+
+    Surface(
+        tonalElevation = 2.dp,
+        color = MaterialTheme.colorScheme.surface
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TextField(
+                value = userMessage,
+                onValueChange = { userMessage = it },
+                placeholder = { Text("Type a message") },
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp),
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                    disabledContainerColor = Color.Transparent,
+                ),
+                maxLines = 5
+            )
+            FloatingActionButton(
+                onClick = {
+                    if (userMessage.isNotBlank()) {
+                        onSendMessage(userMessage)
+                        userMessage = ""
+                        resetScroll()
+                    }
+                },
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+            ) {
+                Icon(
+                    Icons.Default.Send,
+                    contentDescription = "Send"
+                )
             }
         }
     }
